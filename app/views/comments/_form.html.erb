@@ -1,0 +1,11 @@
+<%= form_with model: [recipe, comment], local:true do |f| %>
+    <%= f.hidden_field :recipe_id, { value: @recipe.id} %>
+    <div>
+        <%= f.text_area :content %>
+    </div>
+    <div>
+        <%= f.submit "コメントする" %>
+    </div>
+<% end %>
+
+<p>コメント投稿</p>

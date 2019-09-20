@@ -1,0 +1,15 @@
+<% if @recipe %>
+    <h1><%= @recipe.name %></h1>
+    <div class="buttons_<%= @recipe.id %>">
+        <%= render partial: 'likes/like' %>
+    </div>
+    <div>
+        <h4>コメント</h4>
+        <div id="comments_area">
+            <%= render partial: 'comments/index', locals: {comments: @comments} %>
+        </div>
+        <% if user_signed_in? %>
+            <%= render partial: 'comments/form', locals:{comment: @comment, recipe: @recipe} %>
+        <% end %>
+    </div>
+<% end %>

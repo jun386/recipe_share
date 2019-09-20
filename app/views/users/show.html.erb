@@ -1,0 +1,42 @@
+<h1>User show</h1>
+  <p><%= @user.nickname %></p>
+  <p><%= @user.email %></p>
+  <p><%= @user.prefecture %></p>
+  <p><%= @user.gender %></p>
+  <p><%= @user.introduction %></p>
+  <hr>
+  
+  
+  <%= render 'follow_form' %>
+　<%= render 'stats' %>
+　
+　<!--<ul class="user-tabs">-->
+ <!--     <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>-->
+ <!--     <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>-->
+ <!-- </ul>-->
+  
+  <% if @user.id == current_user.id %>
+      <p><a href="/users/<%= @user.id %>/edit" class="btn btn-success">ユーザー情報を編集する</a></p>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, :value => @user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める", :class => "btn btn-warning" %>
+      <% end %>
+    <% end %>
+  </div>
+  <% if @user.id == current_user.id %>
+    <div class="col-xs-6">
+      <h1>チャット一覧</h1>
+      <hr>
+      <% @entries.each do |e| %>
+        <p><a href="/rooms/<%= e.room.id %>"><strong><%= e.room.name %></strong></a></p>
+        <hr>
+      <% end %>
+      <a href="/rooms" class="btn btn-info">チャット一覧を見る</a>
+    </div>
+  <% end %>
+</div>
+<hr>
+<p><a href="/users" class="btn btn-primary">ユーザー一覧に戻る</a></p>

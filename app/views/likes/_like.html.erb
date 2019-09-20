@@ -1,0 +1,8 @@
+<div class="like_button_on">
+    <%= link_to "いいね済み", like_path(recipe_id: @recipe.id), {method: "post", remote: true} %>
+    <%= @like_count %>
+</div>
+<div class="like_button">
+    <%= link_to "いいね", likes_path(recipe_id: @recipe.id), {method: "post", remote: true} %>
+    <%= @like_count %>
+</div>

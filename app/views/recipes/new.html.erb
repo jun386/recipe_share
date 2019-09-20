@@ -1,0 +1,31 @@
+<!--< form_with model: @recipe, local:true do |f| %>-->
+<%= form_for @recipe do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', id: 'recipe_name' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :genre %>  
+    <%= f.select :genre, [['イタリアン', 1], ['中華', 2], ['和食', 3]] %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :method %>
+    <%= f.text_area :method, class: 'form-control', id: 'recipe_name' %>
+  </div>    
+    
+  <div class="field">
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :images %> 
+    <%= f.file_field :images, multiple: true, class: 'form-control' %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
+<% end %>

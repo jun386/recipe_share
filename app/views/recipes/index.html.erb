@@ -1,0 +1,11 @@
+<h1>投稿一覧</h1>
+<% if @recipes %>
+    <% @recipes.each do |recipe| %>
+        <h1><%= recipe.name %></h1>
+    <% end %>
+<% else %>
+    <%= レシピが一件もありません %>
+<% end %>
+
+
+    
