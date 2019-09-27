@@ -1,8 +1,8 @@
 <h1>User show</h1>
   <p><%= @user.nickname %></p>
   <p><%= @user.email %></p>
-  <p><%= @user.prefecture %></p>
-  <p><%= @user.gender %></p>
+  <p><%= prefecture_name(@user.prefecture) %></p>
+  <p><%= gender_name(@user.gender) %></p>
   <p><%= @user.introduction %></p>
   <hr>
   

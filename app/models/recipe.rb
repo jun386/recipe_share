@@ -3,7 +3,6 @@ class Recipe < ApplicationRecord
     belongs_to :user
     has_many :likes
     has_many :comments, :dependent => :destroy
-    has_many :materials
     mount_uploaders :images, ImagesUploader
     serialize :images, JSON
     

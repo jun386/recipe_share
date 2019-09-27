@@ -9,8 +9,8 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find_by(id: params[:id])
         @comment = Comment.new
-        #@comment = @recipe.comments.build
-        #@comments = @recipe.comments
+        @comment = @recipe.comments.build
+        @comments = @recipe.comments
         
         if @recipe
          @user = @recipe.user

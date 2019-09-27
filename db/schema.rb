@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190920031104) do
+ActiveRecord::Schema.define(version: 20190927074400) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20190920031104) do
     t.string   "tag_list"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "materials"
   end
 
   create_table "relationships", force: :cascade do |t|
