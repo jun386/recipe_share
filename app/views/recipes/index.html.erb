@@ -1,7 +1,7 @@
 <h1>投稿一覧</h1>
 <% if @recipes %>
     <% @recipes.each do |recipe| %>
-        <h1><%= recipe.name %></h1>
+        <p><%= link_to recipe.name, recipe_path(recipe.id) %></p>
     <% end %>
 <% else %>
     <%= レシピが一件もありません %>

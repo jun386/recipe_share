@@ -9,8 +9,8 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find_by(id: params[:id])
         @comment = Comment.new
-        # @comment = @recipe.comments.build
-        # @comments = @recipe.comments
+        #@comment = @recipe.comments.build
+        #@comments = @recipe.comments
         
         if @recipe
          @user = @recipe.user
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
             redirect_to recipe_path(@recipe.id)
         else
             flash[:alert] = "レシピが作成できませんでした"
-            render 'recipes/new'
+            render('recipes/new')
         end
     end
     

@@ -7,8 +7,13 @@
 
   <div class="field">
     <%= f.label :genre %>  
-    <%= f.select :genre, [['イタリアン', 1], ['中華', 2], ['和食', 3]] %>
+    <%= f.collection_select(:genre, Genre.all, :id, :name) %>
   </div>
+  
+  <div class="field">
+    <%= f.label :materials %>
+    <%= f.text_area :materials, class: 'form-control', id: 'recipe_name' %>
+  </div> 
   
   <div class="field">
     <%= f.label :method %>
