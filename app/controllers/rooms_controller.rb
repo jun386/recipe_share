@@ -1,6 +1,11 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, :only => [:create, :show, :index, :edit, :update]
 
+  # def new
+  #   @users = current_user.followings & current_user.followers
+  #   @room = Room.find_by(id: params[:id])
+  # end
+
   def create
     @room = Room.create
     @entry1 = Entry.create(:room_id => @room.id, :user_id => current_user.id)
@@ -22,7 +27,13 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @entries = current_user.entries
+    # @entries = current_user.entries
+    @currentEntries = current_user.entries
+    myRoomIds = []
+    @currentEntries.each do |entry|
+      myRoomIds << entry.room.id
+    end
+    @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?', current_user.id)
   end
 
   def edit

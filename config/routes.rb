@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :relationships, :only => [:create, :destroy]
-  resources :likes, :only => [:create, :destroy]
-
+#   resources :likes, :only => [:create, :destroy]
+  post "likes/:recipe_id/create" => "likes#create"
+  post "likes/:recipe_id/destroy" => "likes#destroy"
+  get "users/:id/likes" => "users#likes"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

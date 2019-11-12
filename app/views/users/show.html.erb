@@ -1,29 +1,54 @@
-<h1>User show</h1>
-  <p><%= @user.nickname %></p>
-  <p><%= @user.email %></p>
-  <p><%= prefecture_name(@user.prefecture) %></p>
-  <p><%= gender_name(@user.gender) %></p>
-  <p><%= @user.introduction %></p>
-  <hr>
-  
-  
-  <%= render 'follow_form' %>
-　<%= render 'stats' %>
-　
-　<!--<ul class="user-tabs">-->
- <!--     <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>-->
- <!--     <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>-->
- <!-- </ul>-->
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <div class="user-info">
+        <i class="fas fa-user-circle fa-7x fa-fw my-skyblue"></i>
+        <!--<img src="< "/user_images/#{@user.image_name}" %>">-->
+        <h2><%= @user.nickname %></h2>
+        <p><%= @user.email %></p>
+        <p><%= @user.introduction %></p>
+        <p><i class="fas fa-map-marker-alt fa-fw"></i><%= prefecture_name(@user.prefecture) %></p>
+        <p><%= gender_name(@user.gender) %></p>
+        <% if @user.id == current_user.id %>
+          <%= link_to("編集", "/users/edit") %>
+        <% end %>
+      </div>
+      <%= render 'follow_form' %>
+　    <%= render 'stats' %>
+    </div>
+    
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    
+    <% @posts.each do |recipe| %>
+      <!--< recipe = Recipe.find_by(id: like.recipe_id)%>-->
+
+      <div class="recipes-index-item" id="wrap">
+        <!--<div class="recipe-left">-->
+          <!--<img src="< "/user_images/#{recipe.user.image_name}" %>">-->
+        <!--</div>-->
+        <div class="recipe-right">
+          <div class="recipe-user-name">
+            <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+          </div>
+          <%= link_to(recipe.name, "/recipes/#{recipe.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
   
   <% if @user.id == current_user.id %>
-      <p><a href="/users/<%= @user.id %>/edit" class="btn btn-success">ユーザー情報を編集する</a></p>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, :value => @user.id %>
-        <% end %>
-        <%= f.submit "チャットを始める", :class => "btn btn-warning" %>
-      <% end %>
+      <p><a href="/users/edit" class="btn btn-success">ユーザー情報を編集する</a></p>
+    <!--< else %>-->
+    <!--  < form_for @room do |f| %>-->
+    <!--    < fields_for @entry do |e| %>-->
+    <!--      <= e.hidden_field :user_id, :value => @user.id %>-->
+    <!--    < end %>-->
+    <!--    <= f.submit "チャットを始める", :class => "btn btn-warning" %>-->
+    <!--  < end %>-->
     <% end %>
   </div>
   <% if @user.id == current_user.id %>

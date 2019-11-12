@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
+    @posts = Recipe.where(user_id: @user.id)
     if @user.id == current_user.id
       @entries = current_user.entries.limit(3)
     else
@@ -17,13 +18,14 @@ class UsersController < ApplicationController
   end
   
   def following
-      @user  = User.find(params[:id])
-      @users = @user.followings
-      render 'show_follow'
+    @user  = User.find_by(id: params[:id])
+    @users = @user.followings
+    @user1 = current_user.followings & current_user.followers 
+    render 'show_follow'
   end
 
   def followers
-    @user  = User.find(params[:id])
+    @user  = User.find_by(id: params[:id])
     @users = @user.followers
     render 'show_follower'
   end
@@ -32,4 +34,5 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @likes = Like.where(user_id: @user.id)
   end
+  
 end

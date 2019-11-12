@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
-    def create
+     def create
         @recipe = Recipe.find_by(id: params[:recipe_id])
-        @comment = @recipe.comments.build(comment_params)
+        @comment = Comment.new(recipe_id: @recipe.id, content: params[:content], user_id: params[:user_id])
         @comment.user_id = current_user.id
         if @comment.save
             flash[:notice] = "コメントしました"
-            redirect_to　recipe_path(@recipe.id)
+            redirect_to  "/recipes/#{@recipe.id}"
         else
             flash[:alert] = "コメントできません"
-            render recipe_path(@recipe.id)
+            render recipe_path(@comment.recipe_id)
         end
     end
     

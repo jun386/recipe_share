@@ -1,8 +1,13 @@
 <h1>チャット一覧</h1>
 <hr>
-<% @entries.each do |e| %>
-  <a href="/rooms/<%= e.room_id %>"><%= e.room.name %></a>
-  <hr>
+<!--< @entries.each do |e| %>-->
+<!--  <a href="/rooms/<= e.room_id %>"><= e.room.name %></a>-->
+<!--  <hr>-->
+<!--< end %>-->
+
+<% @anotherEntries.each do |e| %>
+  <%= link_to room_path(e.room.id) do %>
+    <%= e.user.nickname %>とのDM<br>
+  <% end %>
 <% end %>
 <p><a href="/users/<%= current_user.id %>" class="btn btn-primary"><%= current_user.nickname %>さんの情報に戻る</a></p>
-<p><a href="/" class="btn btn-info">トップに戻る</a></p>

@@ -1,0 +1,41 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <div class="user-info">
+        <i class="fas fa-user-circle fa-7x fa-fw my-skyblue"></i>
+        <!--<img src="< "/user_images/#{@user.image_name}" %>">-->
+        <h2><%= @user.nickname %></h2>
+        <p><%= @user.email %></p>
+        <p><%= @user.introduction %></p>
+        <p><i class="fas fa-map-marker-alt fa-fw"></i><%= prefecture_name(@user.prefecture) %></p>
+        <p><%= gender_name(@user.gender) %></p>
+        <% if @user.id == current_user.id %>
+          <%= link_to("編集", "/users/edit") %>
+        <% end %>
+      </div>
+      <%= render 'follow_form' %>
+　    <%= render 'stats' %>
+    </div>
+    
+    <ul class="user-tabs">
+      <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li class="active"><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    
+    <% @likes.each do |like| %>
+      <% recipe = Recipe.find_by(id: like.recipe_id)%>
+
+      <div class="recipes-index-item" id="wrap">
+        <div class="recipe-left">
+          <!--<img src="< "/user_images/#{recipe.user.image_name}" %>">-->
+        </div>
+        <div class="recipe-right">
+          <div class="recipe-user-name">
+            <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+          </div>
+          <%= link_to(recipe.name, "/recipes/#{recipe.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_many :recipes, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :likes
+  # has_many :likes
   
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
