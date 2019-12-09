@@ -1,0 +1,8 @@
+<% if @recipes.present? %>
+    <% @recipes.each do |recipe| %>
+        <%= recipe.name %>
+        <%= recipe.created_at %>
+    <% end %>
+<% else %>
+    <p>レシピはありません</p>
+<% end %>

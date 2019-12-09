@@ -10,11 +10,13 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find_by(id: params[:id])
         @comment = Comment.new
         # @comment = @recipe.comments.build
-        @comments = @recipe.comments
+        # @comments = @recipe.comments
         
         if @recipe
          @user = @recipe.user
          @likes_count = Like.where(recipe_id: @recipe.id).count
+         @comments = @recipe.comments
+
         end
         
     end
@@ -55,6 +57,10 @@ class RecipesController < ApplicationController
           flash[:notice] = "権限がありません"
           redirect_to("/recipes/index")
         end
+    end
+    
+    def recipe_search
+        @recipes = Recipe.search(params[:search])
     end
     
     private

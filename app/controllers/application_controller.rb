@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  # def self.search(search)
+  #     return Recipe.all unless search
+  #     Recipe.where(['content LIKE ?', "%#{search}%"])
+  # end
+    
 end

@@ -1,35 +1,31 @@
 <br>
 <div class="row">
-  <div class="col-xs-3 text-center">
-    <h4><%= @room.name %></h4>
-    <h4><small><%= @room.explain %></small></h4>
-    <hr>
-    <h4>参加者</h4>
-    <% @entries.each do |e| %>
-      <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.nickname %>さん</a></strong></h5>
-    <% end %>
-    <hr>
-    <a href="/rooms/<%= @room.id %>/edit" class="btn btn-success">情報を編集する</a>
-  </div>
-  <div class="col-xs-9">
+  <div class="container-message">
+    <div class="text-center">
+      <% @anotherEntries.each do |e| %>
+        <%= e.user.nickname %><br>
+      <% end %>
+    </div>
+  <div class="line-bc">
     <% if @messages.present? %>
       <% @messages.each do |m| %>
         <% if m.sender_id == current_user.id %>
-          <h4 class="text-right">
-          <p class="alert alert-success">
-          <%= m.message %>
-          <br><br>
-          <small><strong><a href="/users/<%= m.sender_id %>"><%= m.user.nickname %>さん</a></strong></small>
-          </p>
-          </h4>
+          <div class="mycomment">
+            <p><%= m.message %></p>
+          </div>
+          <div class="bms_clear"></div>
         <% else %>
-          <h4 class="text-left">
-          <p class="alert alert-info">
-          <%= m.message %>
-          <br><br>
-          <small><strong><a href="/users/<%= m.sender_id %>">さん</a></strong></small>
-          </p>
-          </h4>
+          <div class="balloon6">
+            <div class="faceicon">
+              <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+            </div>
+            <div class="chatting">
+              <div class="says">
+                <p><%= m.message %></p>
+              </div>
+            </div>
+          </div>
+          <div class="bms_clear"></div>
         <% end %>
       <% end %>
     <% else %>
@@ -37,14 +33,14 @@
       <h3 class="text-center">メッセージはまだありません</h3>
       <br>
     <% end %>
+    </div>
     <hr>
-    <%= form_for @message do |f| %>
-      <%= f.text_field :message, :class => "form-control myform", :placeholder => "メッセージを入力して下さい" %>
-      <%= f.hidden_field :room_id, :value => @room.id %>
-      <br>
-      <div class="text-center">
-        <%= f.submit "投稿する", :class => "btn btn-primary" %>
-      </div>
-    <% end %>
+    <div id="bms_send">
+      <%= form_for @message do |f| %>
+        <%= f.text_field :message, :id => "bms_send_message", :placeholder => "メッセージを入力して下さい" %>
+        <%= f.hidden_field :room_id, :value => @room.id %>
+        <%= f.submit "送信", :id => "bms_send_btn" %>
+      <% end %>
+    </div>
 </div>
 </div>

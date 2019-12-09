@@ -18,6 +18,12 @@
       </div>
       <ul class="header-menus">
         <% if user_signed_in? %>
+          <div class="header-search">
+            <%= form_tag(recipe_search_recipes_path,:method => 'get') do %>
+              <%= text_field_tag :search %>
+              <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
+            <% end %>
+          </div>
           <li>
             <%= link_to(current_user.nickname, "/users/#{current_user.id}") %>
           </li>

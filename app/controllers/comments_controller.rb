@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-     def create
+    def create
         @recipe = Recipe.find_by(id: params[:recipe_id])
         @comment = Comment.new(recipe_id: @recipe.id, content: params[:content], user_id: params[:user_id])
         @comment.user_id = current_user.id

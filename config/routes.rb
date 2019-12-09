@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :comments, :only => [:create, :destroy]
   resources :genres
   resources :materials
-  resources :rooms, :only => [:create, :show, :index, :edit, :update]
+  resources :rooms, :only => [:create, :show, :index, :edit, :update, :new]
   resources :messages
   resources :users do
         member do
@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   post "likes/:recipe_id/create" => "likes#create"
   post "likes/:recipe_id/destroy" => "likes#destroy"
   get "users/:id/likes" => "users#likes"
+  resources :recipes do
+        collection{ get "recipe_search" }
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

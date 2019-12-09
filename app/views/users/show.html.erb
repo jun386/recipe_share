@@ -40,8 +40,7 @@
   </div>
 </div>
   
-  <% if @user.id == current_user.id %>
-      <p><a href="/users/edit" class="btn btn-success">ユーザー情報を編集する</a></p>
+  <!--< if @user.id == current_user.id %>-->
     <!--< else %>-->
     <!--  < form_for @room do |f| %>-->
     <!--    < fields_for @entry do |e| %>-->
@@ -49,19 +48,32 @@
     <!--    < end %>-->
     <!--    <= f.submit "チャットを始める", :class => "btn btn-warning" %>-->
     <!--  < end %>-->
-    <% end %>
-  </div>
-  <% if @user.id == current_user.id %>
-    <div class="col-xs-6">
-      <h1>チャット一覧</h1>
-      <hr>
-      <% @entries.each do |e| %>
-        <p><a href="/rooms/<%= e.room.id %>"><strong><%= e.room.name %></strong></a></p>
-        <hr>
+    <!--< end %>-->
+  <!--</div>-->
+  <!--< if @user.id == current_user.id %>-->
+  <!--  <div class="col-xs-6">-->
+  <!--    <h1>チャット一覧</h1>-->
+  <!--    <hr>-->
+  <!--    < @entries.each do |e| %>-->
+  <!--      <p><a href="/rooms/<= e.room.id %>"><strong><= e.room.name %></strong></a></p>-->
+  <!--      <hr>-->
+  <!--    < end %>-->
+  <!--    <a href="/rooms" class="btn btn-info">チャット一覧を見る</a>-->
+  <!--  </div>-->
+  <!--< end %>-->
+<!--</div>-->
+
+<% if @user.id == current_user.id %>
+
+  <% else %>
+    <% if @isRoom == true %>
+      <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, :value => @user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める" %>
       <% end %>
-      <a href="/rooms" class="btn btn-info">チャット一覧を見る</a>
-    </div>
+    <% end %>
   <% end %>
-</div>
-<hr>
-<p><a href="/users" class="btn btn-primary">ユーザー一覧に戻る</a></p>
