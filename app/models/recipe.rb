@@ -12,9 +12,10 @@ class Recipe < ApplicationRecord
     
     def self.search(search)
       if search
-        Post.where(['content LIKE ?', "%#{search}%"])
+        logger.debug("================= recipe.rb = #{search}")
+        Recipe.where('name LIKE ?', "%#{search}%")
       else
-        Post.all
+        Recipe.all
       end
     end
 end

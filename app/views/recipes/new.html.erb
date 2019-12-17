@@ -1,36 +1,39 @@
-<!--< form_with model: @recipe, local:true do |f| %>-->
-<%= form_for @recipe do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control', id: 'recipe_name' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :genre %>  
-    <%= f.collection_select(:genre, Genre.all, :id, :name) %>
-  </div>
+<div class="container">
+  <h1>新規投稿</h1>
+  <!--< form_with model: @recipe, local:true do |f| %>-->
+  <%= form_for @recipe do |f| %>
+    <div class="field recipe_field">
+      <%= f.label '料理名' %>
+      <%= f.text_field :name, class: 'recipe_new_name', id: 'recipe_name' %>
+    </div>
   
-  <div class="field">
-    <%= f.label :materials %>
-    <%= f.text_area :materials, class: 'form-control', id: 'recipe_name', placeholder: '人参、ほうれん草、・・・' %>
-  </div> 
-  
-  <div class="field">
-    <%= f.label :method %>
-    <%= f.text_area :method, class: 'form-control', id: 'recipe_name' %>
-  </div>    
+    <div class="field recipe_field">
+      <%= f.label "ジャンル" %>  
+      <%= f.collection_select(:genre, Genre.all, :id, :name) %>
+    </div>
     
-  <div class="field">
-    <%= f.label :tag_list %>
-    <%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :images %> 
-    <%= f.file_field :images, multiple: true, class: 'form-control' %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit "登録する" %>
-  </div>
-<% end %>
+    <div class="field recipe_field materials">
+      <%= f.label "材料" %>
+      <%= f.text_area :materials, class: 'recipe_new_materials', id: 'recipe_name', placeholder: '人参、ほうれん草、・・・' %>
+    </div> 
+    
+    <div class="field recipe_field method">
+      <%= f.label "作り方" %>
+      <%= f.text_area :method, class: 'recipe_new_method', id: 'recipe_name', placeholder: text_placeholder %>
+    </div>    
+      
+    <div class="field recipe_field">
+      <%= f.label "タグ" %>
+      <%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control" %>
+    </div>
+    
+    <div class="field recipe_field">
+      <%= f.label "写真" %> 
+      <%= f.file_field :images, multiple: true, class: 'form-control' %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "投稿" %>
+    </div>
+  <% end %>
+</div>

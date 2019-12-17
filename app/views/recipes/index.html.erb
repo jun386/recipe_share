@@ -1,11 +1,32 @@
-<h1>投稿一覧</h1>
-<% if @recipes %>
-    <% @recipes.each do |recipe| %>
-        <p><%= link_to recipe.name, recipe_path(recipe.id) %></p>
+<div class="container">
+    <h1>投稿一覧</h1>
+    <div class="recipes_index">
+    <% if @recipes %>
+        <% @recipes.each do |recipe| %>
+            <div class="recipe_index">
+                <% if recipe.images.present? %>
+                    <%= recipe.images %>
+                <% else %>
+                    <div class="no_image_container">
+                        <p>No Image</p>
+                    </div>
+                <% end %>
+                <%= link_to recipe.name, recipe_path(recipe.id) %><br>
+                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+                <i class="fas fa-heart heart-red"></i>
+                <%= Like.where(recipe_id: recipe.id).count %><br>
+                <% msg = '材料:'%>
+                <%= msg %>
+                <%= recipe.materials %>
+                <div class="recipe_updated_at">
+                    <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        <%= レシピが一件もありません %>
     <% end %>
-<% else %>
-    <%= レシピが一件もありません %>
-<% end %>
-
+    </div>
+</div>
 
     

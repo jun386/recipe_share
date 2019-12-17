@@ -1,22 +1,26 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, :only => [:create, :show, :index, :edit, :update, :new]
+  before_action :authenticate_user!, :only => [:create, :show, :index, :related]
 
-  def new
+
+  def related
     @users = User.where(id: current_user.followings & current_user.followers)
-    @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @users)
-    if @users == current_user.id
-    else
-      @currentUserEntry.each do |cu|
-        @userEntry.each do |u|
+    @current_user_entries = Entry.where(user_id: current_user.id)
+    @entries = []
+    @user_is_rooms = {}
+    @users.each do |user|
+      @is_room = false
+      @user_entries = Entry.where(user_id: user.id)
+      @current_user_entries.each do |cu|
+        @user_entries.each do |u|
           if cu.room_id == u.room_id then
-            @isRoom = true
-            @roomId = cu.room_id
+            @is_room = true
+            @user_is_rooms[user.id] = true
+            @entries.push(u)
           end
         end
       end
-      if @isRoom
-      else
+      if @is_room == false
+        @user_is_rooms[user.id] = false
         @room = Room.new
         @entry = Entry.new
       end
@@ -41,33 +45,17 @@ class RoomsController < ApplicationController
       redirect_to :back
       flash[:alert] = "無効なユーザー"
     end
-    @currentEntries = current_user.entries
-    @anotherEntries = Entry.where(room_id: @room.id).where('user_id != ?', current_user.id)
+    @current_entries = current_user.entries
+    @another_entries = Entry.where(room_id: @room.id).where('user_id != ?', current_user.id)
   end
 
   def index
-    # @entries = current_user.entries
-    @currentEntries = current_user.entries
-    myRoomIds = []
-    @currentEntries.each do |entry|
-      myRoomIds << entry.room.id
+    @current_entries = current_user.entries
+    my_room_ids = []
+    @current_entries.each do |entry|
+      my_room_ids << entry.room.id
     end
-    @anotherEntries = Entry.where(room_id: myRoomIds).where('user_id != ?', current_user.id)
+    @another_entries = Entry.where(room_id: my_room_ids).where('user_id != ?', current_user.id)
   end
 
-  def edit
-    @room = Room.find_by(id: params[:id])
-  end
-
-  # def update
-  #   @room = Room.find_by(id: params[:id])
-  #   if Entry.where(:user_id => current_user.id, :room_id => @room.id).present?
-  #     @room.update(params.require(:room).permit(:name, :explain))
-  #     flash[:notice] = "チャット情報が変更されました"
-  #     redirect_to :back
-  #   else
-  #     flash[:alert] = "無効なユーザー"
-  #     redirect_to :back
-  #   end
-  # end
 end

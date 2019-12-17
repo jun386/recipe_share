@@ -2,11 +2,11 @@
 <div class="row">
   <div class="container-message">
     <div class="text-center">
-      <% @anotherEntries.each do |e| %>
+      <% @another_entries.each do |e| %>
         <%= e.user.nickname %><br>
       <% end %>
     </div>
-  <div class="line-bc">
+  <div class="line-bc" id="line-bc">
     <% if @messages.present? %>
       <% @messages.each do |m| %>
         <% if m.sender_id == current_user.id %>
@@ -34,7 +34,7 @@
       <br>
     <% end %>
     </div>
-    <hr>
+    <br>
     <div id="bms_send">
       <%= form_for @message do |f| %>
         <%= f.text_field :message, :id => "bms_send_message", :placeholder => "メッセージを入力して下さい" %>
@@ -42,5 +42,7 @@
         <%= f.submit "送信", :id => "bms_send_btn" %>
       <% end %>
     </div>
+  </div>
 </div>
-</div>
+
+

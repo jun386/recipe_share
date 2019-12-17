@@ -16,7 +16,6 @@ class RecipesController < ApplicationController
          @user = @recipe.user
          @likes_count = Like.where(recipe_id: @recipe.id).count
          @comments = @recipe.comments
-
         end
         
     end
@@ -26,7 +25,6 @@ class RecipesController < ApplicationController
     end
     
     def create
-        logger.debug("=================== tag_list = #{params[:recipe][:tag_list]}")
         @recipe = Recipe.new(recipe_params)
         if @recipe.save
             flash[:notice] = "新しいレシピが作成されました"
@@ -60,12 +58,12 @@ class RecipesController < ApplicationController
     end
     
     def recipe_search
-        @recipes = Recipe.search(params[:search])
+        @recipes = Recipe.search(params[:search]).order(created_at: :desc)
     end
     
     private
         def recipe_params
-            params.require(:recipe).permit(:name, :method, :tag_list, :user_id, :genre, {images: []}).merge(user_id: current_user.id)
+            params.require(:recipe).permit(:name, :materials, :method, :tag_list, :user_id, :genre, {images: []}).merge(user_id: current_user.id)
         end
     
 end

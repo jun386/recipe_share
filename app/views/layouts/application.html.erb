@@ -19,7 +19,7 @@
       <ul class="header-menus">
         <% if user_signed_in? %>
           <div class="header-search">
-            <%= form_tag(recipe_search_recipes_path,:method => 'get') do %>
+            <%= form_tag("/recipes/recipe_search") do %>
               <%= text_field_tag :search %>
               <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
             <% end %>

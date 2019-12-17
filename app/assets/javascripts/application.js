@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+//   $(document).on('turbolinks:load', function() { 
+//      const obj = document.getElementById("line-bc");
+//  　　 obj.scrollTop = obj.scrollHeight;
+//   });

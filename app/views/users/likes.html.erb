@@ -21,21 +21,49 @@
       <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
       <li class="active"><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></li>
     </ul>
-    
-    <% @likes.each do |like| %>
-      <% recipe = Recipe.find_by(id: like.recipe_id)%>
-
-      <div class="recipes-index-item" id="wrap">
-        <div class="recipe-left">
-          <!--<img src="< "/user_images/#{recipe.user.image_name}" %>">-->
-        </div>
-        <div class="recipe-right">
-          <div class="recipe-user-name">
-            <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+    <% if @likes.present? %>
+      <% @likes.each do |like| %>
+        <% recipe = Recipe.find_by(id: like.recipe_id) %>
+        <div class="recipes-index-item" id="wrap">
+          <div class="recipe_index">
+              <% if recipe.images.present? %>
+                  <%= recipe.images %>
+              <% else %>
+                  <div class="no_image_container">
+                      <p>No Image</p>
+                  </div>
+              <% end %>
+              <%= link_to recipe.name, recipe_path(recipe.id) %><br>
+              <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+              <i class="fas fa-heart heart-red"></i>
+              <%= Like.where(recipe_id: recipe.id).count %><br>
+              <% msg = '材料:'%>
+              <%= msg %>
+              <%= recipe.materials %>
+              <div class="recipe_updated_at">
+                  <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
+              </div>
           </div>
-          <%= link_to(recipe.name, "/recipes/#{recipe.id}") %>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>お気に入りはありません</p>
     <% end %>
+
+    <div class="message_create">
+      <% if @user.id == current_user.id %>
+      <% else %>
+        <% if @isRoom == true %>
+          <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value => @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

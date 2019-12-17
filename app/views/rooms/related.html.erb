@@ -1,0 +1,18 @@
+<% @users.each do |user| %>
+  <%= user.nickname %>
+    <% if @user_is_rooms[user.id] == true %>
+      <% @entries.each do |entry| %>
+         <% if entry.user_id == user.id %>
+          <p><a href="/rooms/<%= entry.room_id %>">チャットへ</a></p>
+         <% end %>
+      <% end %>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, :value => user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める" %>
+      <% end %>
+    <% end %>
+  <hr>
+<% end %>

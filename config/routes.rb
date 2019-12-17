@@ -6,11 +6,11 @@ Rails.application.routes.draw do
   }  
   root 'home#top'
   resources :users, :only => [:show, :index]
-  resources :recipes
   resources :comments, :only => [:create, :destroy]
   resources :genres
   resources :materials
-  resources :rooms, :only => [:create, :show, :index, :edit, :update, :new]
+  get 'rooms/related' => "rooms#related"
+  resources :rooms, :only => [:create, :show, :index]
   resources :messages
   resources :users do
         member do
@@ -26,7 +26,10 @@ Rails.application.routes.draw do
   post "likes/:recipe_id/destroy" => "likes#destroy"
   get "users/:id/likes" => "users#likes"
   resources :recipes do
-        collection{ get "recipe_search" }
+        collection{ post "recipe_search"}
   end
+  # get 'recipes/recipe_search' => 'recipes#recipe_search'
+  resources :recipes
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

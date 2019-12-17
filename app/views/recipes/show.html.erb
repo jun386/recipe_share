@@ -1,31 +1,48 @@
-<% if @recipe %>
-    <h1><%= @recipe.name %></h1>
-    <h1><%= @user.nickname%></h1>
-    <% if Like.find_by(user_id: current_user.id, recipe_id: @recipe.id) %>
-        <%= link_to("/likes/#{@recipe.id}/destroy", {method: "recipe"}) do %>
-          <span class="fa fa-heart like-btn-unlike"></span>
-        <% end %>
-    <% else %>
-        <%= link_to("/likes/#{@recipe.id}/create", {method: "recipe"}) do %>
-          <span class="fa fa-heart like-btn"></span>
-        <% end %>
-    <% end %>
-    <%= @likes_count %>
-    <!--<div class="buttons_< @recipe.id %>">-->
-    <!--    < render partial: 'likes/like' %>-->
-    <!--</div>-->
-    <div>
-        <h4>コメント</h4>
-        <div id="comments_area">
-            <%= render partial: 'comments/index', locals: {comments: @comments} %>
-        </div>
-        <% if user_signed_in? %>
-            <%= form_tag "/recipes/#{@recipe.id}/comments" do %>
-                <input type="text" name="content">
-                <input type="hidden" name="user_id" value="<%= current_user.id %>"> 
-                <input type="hidden" name="recipe_id" value="<%= @recipe.id %>"> 
-                <input type="submit" value="コメントする">
-            <% end %>
+<div class="container">
+    <div class="recipe_show">
+        <% if @recipe %>
+            <h1><%= @recipe.name %></h1>
+            <div class="recipe_show_img">
+                <% if @recipe.images.present? %>
+                    <%= @recipe.images %>
+                <% else %>
+                    <div class="show_no_image">
+                        <p>No Image</p>
+                    </div>
+                <% end %>
+                <%= link_to(@recipe.user.nickname, "/users/#{@recipe.user.id}") %>
+                <% if Like.find_by(user_id: current_user.id, recipe_id: @recipe.id) %>
+                    <%= link_to("/likes/#{@recipe.id}/destroy", {method: "recipe"}) do %>
+                      <span class="fa fa-heart like-btn-unlike"></span>
+                    <% end %>
+                <% else %>
+                    <%= link_to("/likes/#{@recipe.id}/create", {method: "recipe"}) do %>
+                      <span class="fa fa-heart like-btn"></span>
+                    <% end %>
+                <% end %>
+                <%= @likes_count %>
+            </div>
+            <!--<div class="buttons_< @recipe.id %>">-->
+            <!--    < render partial: 'likes/like' %>-->
+            <!--</div>-->
+            <div class="clear">
+                <h4>材料</h4>
+                <p><%= @recipe.materials %></p>
+                <h4>作り方</h4>
+                <%= simple_format(@recipe.method) %>
+                <h4>コメント</h4>
+                <div id="comments_area">
+                    <%= render partial: 'comments/index', locals: {comments: @comments} %>
+                </div>
+                <% if user_signed_in? %>
+                    <%= form_tag "/recipes/#{@recipe.id}/comments" do %>
+                        <input type="text" name="content">
+                        <input type="hidden" name="user_id" value="<%= current_user.id %>"> 
+                        <input type="hidden" name="recipe_id" value="<%= @recipe.id %>"> 
+                        <input type="submit" value="コメントする">
+                    <% end %>
+                <% end %>
+            </div>
         <% end %>
     </div>
-<% end %>
+</div>
