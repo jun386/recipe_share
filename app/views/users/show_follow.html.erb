@@ -1,27 +1,15 @@
-<% @user.followings.each do |user| %>
-<table>
-<tr>
-  <td>  <%= link_to user.nickname, user_path(user) %> </td>
-  <!--< if @user1.id == user.id %>-->
-  <!--< if user.id == current_user.id %>-->
-
-  <!--< else %>-->
-  <!--  < if @isRoom == true %>-->
-  <!--    <p><a href="/rooms/<= @roomId %>">チャットへ</a>-->
-  <!--  < else %>-->
-  <!--    <= form_for @room do |f| %>-->
-  <!--      <= fields_for @entry do |e| %>-->
-  <!--        <= e.hidden_field :user_id, :value=> @user.id %>-->
-  <!--      < end %>-->
-  <!--      <= f.submit "チャットを始める" %>-->
-  <!--    < end %>-->
-  <!--  < end %>-->
-  <!--< end %>-->
-    <!--<td>< link_to 'talk', "/rooms" %></td>-->
-  <!--< end %>-->
-</tr>
-</table>
-<% end %>
-<!--< @user1.each do |user1| %>-->
-<!--  < user1.nickname %> -->
-<!--< end %>-->
+<div class="container">
+  <h1>フォロー一覧</h1>
+  <div class="user_index">
+    <% @users.each do |user| %>
+      <div class="user_index_clear">
+        <% if user.image.present? %>
+          <%= image_tag user.image %>
+        <% else %>
+          <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+        <% end %>
+        <%= link_to user.nickname, user_path(user.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

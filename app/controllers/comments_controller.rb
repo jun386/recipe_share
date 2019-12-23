@@ -5,18 +5,18 @@ class CommentsController < ApplicationController
         @comment.user_id = current_user.id
         if @comment.save
             flash[:notice] = "コメントしました"
-            redirect_to  "/recipes/#{@recipe.id}"
+            redirect_to :back
         else
             flash[:alert] = "コメントできません"
-            render recipe_path(@comment.recipe_id)
+            redirect_to :back
         end
     end
     
     def destroy
         @comment = Comment.find_by(id: params[:id])
         if @comment.destroy
-            flash[:notice] = "コメントを削除しました"
-            redirect_to recipe_path(@recipe.id)
+            # flash[:notice] = "コメントを削除しました"
+            redirect_to :back
         end
     end
     

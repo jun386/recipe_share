@@ -2,67 +2,76 @@
   <div class="container">
     <div class="user">
       <div class="user-info">
-        <i class="fas fa-user-circle fa-7x fa-fw my-skyblue"></i>
-        <!--<img src="< "/user_images/#{@user.image_name}" %>">-->
+        <% if @user.image.present? %>
+          <%= image_tag @user.image %>
+        <% else %>
+          <i class="fas fa-user-circle fa-7x fa-fw my-skyblue"></i>
+        <% end %>
         <h2><%= @user.nickname %></h2>
         <p><%= @user.email %></p>
         <p><%= @user.introduction %></p>
         <p><i class="fas fa-map-marker-alt fa-fw"></i><%= prefecture_name(@user.prefecture) %></p>
         <p><%= gender_name(@user.gender) %></p>
         <% if @user.id == current_user.id %>
-          <%= link_to("編集", "/users/edit") %>
+          <span class="to_user_edit"><%= link_to("ユーザー情報の編集", "/users/edit") %></span>
         <% end %>
       </div>
+
+      <% if @user.id != current_user.id %>
+        <div class="message_create">
+          <% if @following_check == true %>
+            <% if @isRoom == true %>
+              <p><a href="/rooms/<%= @roomId %>", class="user_show_to_room_btn">チャットへ</a>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, :value => @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める", :class => "user_show_room_new_btn" %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
       <%= render 'follow_form' %>
-　    <%= render 'stats' %>
+      <br>
+      <%= render 'stats' %>
     </div>
-    
+  
     <ul class="user-tabs">
       <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
       <li class="active"><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></li>
     </ul>
-    <% if @likes.present? %>
-      <% @likes.each do |like| %>
-        <% recipe = Recipe.find_by(id: like.recipe_id) %>
-        <div class="recipes-index-item" id="wrap">
-          <div class="recipe_index">
-              <% if recipe.images.present? %>
-                  <%= recipe.images %>
-              <% else %>
-                  <div class="no_image_container">
-                      <p>No Image</p>
-                  </div>
-              <% end %>
-              <%= link_to recipe.name, recipe_path(recipe.id) %><br>
-              <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
-              <i class="fas fa-heart heart-red"></i>
-              <%= Like.where(recipe_id: recipe.id).count %><br>
-              <% msg = '材料:'%>
-              <%= msg %>
-              <%= recipe.materials %>
-              <div class="recipe_updated_at">
-                  <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
-              </div>
+    <div class="likes_recipe_wrapper">
+      <% if @likes.present? %>
+        <% @likes.each do |like| %>
+          <% recipe = Recipe.find_by(id: like.recipe_id) %>
+          <div class="recipes-index-item" id="wrap">
+            <div class="recipe_index">
+                <% if recipe.image.present? %>
+                    <div class="image_container">
+                        <%= image_tag recipe.image %>
+                    </div>
+                <% else %>
+                    <div class="no_image_container">
+                        <p>No Image</p>
+                    </div>
+                <% end %>
+                <%= link_to recipe.name, recipe_path(recipe.id) %><br>
+                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+                <i class="fas fa-heart heart-red"></i>
+                <%= Like.where(recipe_id: recipe.id).count %><br>
+                <% msg = '材料:'%>
+                <%= msg %>
+                <%= recipe.materials %>
+                <div class="recipe_updated_at">
+                    <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
+                </div>
+            </div>
           </div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>お気に入りはありません</p>
-    <% end %>
-
-    <div class="message_create">
-      <% if @user.id == current_user.id %>
-      <% else %>
-        <% if @isRoom == true %>
-          <p><a href="/rooms/<%= @roomId %>">チャットへ</a>
-        <% else %>
-          <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, :value => @user.id %>
-            <% end %>
-            <%= f.submit "チャットを始める" %>
-          <% end %>
         <% end %>
+      <% else %>
+        <p>お気に入りはありません</p>
       <% end %>
     </div>
   </div>

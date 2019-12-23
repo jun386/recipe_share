@@ -1,3 +1,12 @@
-<%= form_for(current_user.following_relationships.find_by(following_id: @user.id), html: { method: :delete }) do |f| %>
-  <%= f.submit "フォローを解除する", class: "btn btn-large follow-btn" %>
-<% end %>
+<button class="unfollow_btn", id="following_delete_btn">フォローを解除する</button>
+    <div id="follow_bg">
+        <div id="following_delete_alertbox">
+            <p>本当にフォローを解除しますか？</p>
+            <button id="follow_close_btn">いいえ</button>
+            <div class="unfollow_div">
+                <%= form_for(current_user.following_relationships.find_by(following_id: @user.id), html: { method: :delete }) do |f| %>
+                  <%= f.submit "はい", :id => "follow_delete" %>
+                <% end %>
+            </div>
+        </div>
+    </div>

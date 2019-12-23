@@ -64,6 +64,7 @@ h2 {
 
 .user-info {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .user-info h2 {
@@ -138,4 +139,186 @@ h2 {
 
 .user_index p {
     margin: 0;
+}
+
+.user-info img {
+    width: 120px;
+    height: 120px;
+    margin-top: 60px;
+    border-radius: 50%;
+}
+
+.user_index img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    float: left;
+    padding-top: 10px;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.user_index_clear {
+    // width: 100px;
+    height: 90px;
+    position: relative;
+}
+
+.user_index i {
+    float: left;
+    margin: 0;
+    position: absolute;
+    left: 25px;
+    top: 15px;
+}
+
+.user_index_clear a {
+    font-size: 30px;
+    position: absolute;
+    top: 25px;
+    left: 150px;
+}
+
+.user_index_clear:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.index_recipe_wrapper > p {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.likes_recipe_wrapper > p {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.follow_btn {
+    background-color: #87CEEB;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: 0 0 10px auto;
+}
+
+.follow_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.unfollow_btn {
+    background-color: #87CEEB;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: 0 0 10px auto;
+}
+
+.unfollow_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.user_show_room_new_btn {
+    background-color: #87CEEB;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: 0 auto;
+    float: left;
+}
+
+.user_show_room_new_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.user_show_to_room_btn {
+    background-color: #87CEEB;
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: 0 auto;
+    float: left;
+    text-align: center;
+}
+
+.user_show_to_room_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+#follow_bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.4);
+}
+
+#following_delete_alertbox {
+  margin: 300px auto 0;
+  text-align: center;
+  padding-top: 20px;
+  width: 300px;
+  height: 100px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+#follow_close_btn {
+  margin-right: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+}
+
+#follow_delete {
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#follow_delete a {
+  color: #000;
+}
+
+.unfollow_div {
+    display: inline-block;
+}
+
+.to_user_edit {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    width: 160px;
+    text-align: center;
+    background-color: #87CEEB;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.to_user_edit a {
+    color: #000;
 }

@@ -16,14 +16,16 @@
           <%= link_to("Recipe-share", "/")%>
         </li>
       </div>
+      <i class="fas fa-bars fa-2x" id="toggle_bar"></i>
       <ul class="header-menus">
+        <div class="header_user_login">
         <% if user_signed_in? %>
-          <div class="header-search">
+          <li class="header-search">
             <%= form_tag("/recipes/recipe_search") do %>
               <%= text_field_tag :search %>
               <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
             <% end %>
-          </div>
+          </li>
           <li>
             <%= link_to(current_user.nickname, "/users/#{current_user.id}") %>
           </li>
@@ -42,6 +44,7 @@
           <li>
             <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
           </li>
+        </div>
         <% else %>
           <li>
             <%= link_to("ログイン", new_user_session_path) %>

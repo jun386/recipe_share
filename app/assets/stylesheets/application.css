@@ -21,6 +21,7 @@
      background-color: #eeeeee;
      text-align: right;
      height: 60px; 
+     position: relative;
  }
  
 .logo li {
@@ -32,6 +33,7 @@
     position: absolute;
     left: 20px;
     top: 20px;
+    color: #000;
 }
 
 .header-menus {
@@ -47,12 +49,11 @@
 }
 .header-menus li a {
     text-decoration: none;
+    color: #000;
 }
 
 .header-search {
-    position: absolute;
     left: 250px;
-    top: 15px;
 }
 
 .header-search form {
@@ -74,7 +75,7 @@
 .btn-search {
     font-size: 10px;
     width: 50px;
-    height: 30px;
+    height: 25px;
     /*-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);*/
     /*-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);*/
     /*box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);*/
@@ -85,4 +86,64 @@
 
 .btn:hover {
     cursor: pointer;
+}
+
+#toggle_bar {
+    display: none;
+}
+
+@media(max-width: 1000px){
+    
+    .logo {
+        height: 20px;
+    }
+    
+   .header-menus li {
+       margin: 0px auto;
+       padding-top: 15px;
+       padding-bottom: 10px;
+       /*width: 50%;*/
+       text-align: center;
+   }
+    
+    
+    .header_user_login {
+        text-align: right;
+    }
+    
+    .header_user_login li {
+        display: block;
+        padding-right: 20px;
+        border-top: 1px solid lightgray;
+    }
+    
+    .header-search form {
+        width: 400px;
+        height: 30px;
+        margin: 0 auto;
+    }
+
+    body > nav > ul > div > li.header-search {
+       padding-top: 10px;
+       /*margin: 10px auto 0px;*/
+    }
+    
+    nav {
+        height: 400px;
+        margin-bottom: 10px;
+    }
+    
+    .header-menus {
+        padding-top: 30px;
+    }
+    
+    #toggle_bar {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+    }
+    
+    
 }

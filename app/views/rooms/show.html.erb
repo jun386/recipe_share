@@ -1,9 +1,9 @@
 <br>
 <div class="row">
   <div class="container-message">
-    <div class="text-center">
+    <div class="room_show_text-center">
       <% @another_entries.each do |e| %>
-        <%= e.user.nickname %><br>
+        <p><%= e.user.nickname %></p>
       <% end %>
     </div>
   <div class="line-bc" id="line-bc">

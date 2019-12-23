@@ -1,3 +1,63 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.comment_container:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.comment_container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.comment_container img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.comment_name {
+    position: absolute;
+    top: 5px;
+    left: 50px;
+    color: #000;
+}
+
+.comment_content {
+    margin-left: 30px;
+}
+
+.comment_delete {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    width: 120px;
+    text-align: center;
+    color: #000;
+    display: block;
+    margin: 0 0 15px auto;
+    background-color: #ff6347;
+}
+
+.comment_delete:hover {
+  background-color: rgba(255, 99, 71, .7);
+}
+
+.comment_form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.comment_container i {
+    margin: 0;
+}
+
+.comment_form_input {
+    width: 300px;
+    height: 20px;
+}
+
+.comment_btn {
+    cursor: pointer;
+}

@@ -1,9 +1,18 @@
-<% @comments.each do |comment|%>
-    <% unless comment.id.nil? %>
-        <p><%= link_to "#{comment.user.nickname}さん", user_path(comment.user.id) %></p>
-        <p><%= comment.content %></p>
-        <% if comment.user == current_user %>
-            <p><%= link_to'コメントを削除する', recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true %></p>
+<div class="comments_container">
+    <% @comments.each do |comment|%>
+    <div class="comment_container">
+        <% unless comment.id.nil? %>
+            <% if comment.user.image.present? %>
+              <%= image_tag comment.user.image %>
+            <% else %>
+              <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+            <% end %>
+            <%= link_to "#{comment.user.nickname}", user_path(comment.user.id) , :class => "comment_name" %>
+            <p class="comment_content"><%= comment.content %></p>
+            <% if comment.user == current_user %>
+                <%= link_to'コメントを削除する', recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, :class => "comment_delete" %>
+            <% end %>
         <% end %>
+    </div>
     <% end %>
-<% end %>
+</div>

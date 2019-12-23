@@ -1,9 +1,15 @@
-<% @user.followers.each do |user| %>
-<table>
-<tr>
-  <td>  <%= user.nickname %> </td>
-  <td><%= link_to '詳細', user_path(user) %></td>
-</tr>
-
-</table>
-<% end %>
+<div class="container">
+  <h1>フォロワー一覧</h1>
+  <div class="user_index">
+    <% @users.each do |user| %>
+      <div class="user_index_clear">
+        <% if user.image.present? %>
+          <%= image_tag user.image %>
+        <% else %>
+          <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+        <% end %>
+        <%= link_to user.nickname, user_path(user.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

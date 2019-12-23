@@ -1,30 +1,40 @@
 <div class="container">
     <h1>投稿一覧</h1>
     <div class="recipes_index">
-    <% if @recipes %>
+    <% if @recipes.present? %>
         <% @recipes.each do |recipe| %>
             <div class="recipe_index">
-                <% if recipe.images.present? %>
-                    <%= recipe.images %>
+                <% if recipe.image.present? %>
+                    <div class="image_container">
+                        <%= image_tag recipe.image %>
+                    </div>
                 <% else %>
                     <div class="no_image_container">
                         <p>No Image</p>
                     </div>
                 <% end %>
-                <%= link_to recipe.name, recipe_path(recipe.id) %><br>
-                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+                <%= link_to recipe.name, recipe_path(recipe.id), :class => "recipe_index_name" %><br>
+                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}", :class => "recipe_index_user_name") %>
                 <i class="fas fa-heart heart-red"></i>
                 <%= Like.where(recipe_id: recipe.id).count %><br>
                 <% msg = '材料:'%>
                 <%= msg %>
                 <%= recipe.materials %>
+                <% if recipe.tag_list.present? %>
+                    <div class="recipe_show_tag">
+                        <i class="fas fa-tags fa-fw"></i>
+                        <% recipe.tag_list.each do |tag| %>
+                          <%= link_to tag, recipes_path(tag_name: tag), :class => "show_tag_container" %>
+                        <% end %>
+                    </div>
+                <% end %>
                 <div class="recipe_updated_at">
                     <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
                 </div>
             </div>
         <% end %>
     <% else %>
-        <%= レシピが一件もありません %>
+        <p>レシピが一件もありません</p>
     <% end %>
     </div>
 </div>

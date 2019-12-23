@@ -1,13 +1,22 @@
-<h1>チャット一覧</h1>
-<hr>
-<%= link_to("talk", "/rooms/related") %>
-<br>
-
-<% if @another_entries.present? %>
-  <% @another_entries.each do |e| %>
-    <%= link_to room_path(e.room_id) do %>
-      <%= e.user.nickname %>とのDM<br>
-    <% end %>
-  <% end %>
-<% end %>
-<p><a href="/users/<%= current_user.id %>" class="btn btn-primary"><%= current_user.nickname %>さんの情報に戻る</a></p>
+<div class="container">
+  <h1>チャット一覧</h1>
+  <div class="room_index_container">
+    <span class="to_room_related"><%= link_to("相互フォロー一覧", "/rooms/related") %></span>
+    <div class="room_index_wrapper">
+      <% if @another_entries.present? %>
+        <% @another_entries.each do |e| %>
+          <div class="room_index">
+            <% if e.user.image.present? %>
+              <%= image_tag e.user.image %>
+            <% else %>
+              <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+            <% end %>
+            <%= link_to room_path(e.room_id) do %>
+              <%= e.user.nickname %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

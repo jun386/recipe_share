@@ -4,6 +4,13 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
+    @users = User.where(id: current_user.followings & current_user.followers)
+    @following_check = false
+    @users.each do |user|
+      if user.id == @user.id
+        @following_check = true
+      end
+    end
     @recipes = Recipe.where(user_id: @user.id).order(created_at: :desc)
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
@@ -43,6 +50,13 @@ class UsersController < ApplicationController
   
   def likes
     @user = User.find_by(id: params[:id])
+    @users = User.where(id: current_user.followings & current_user.followers)
+    @following_check = false
+    @users.each do |user|
+      if user.id == @user.id
+        @following_check = true
+      end
+    end
     @likes = Like.where(user_id: @user.id).order(created_at: :desc)
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)

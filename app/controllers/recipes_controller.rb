@@ -4,6 +4,9 @@ class RecipesController < ApplicationController
     
     def index
         @recipes = Recipe.all.order(created_at: :desc)
+        if params[:tag_name]
+          @recipes = @recipes.tagged_with("#{params[:tag_name]}")
+        end
     end
     
     def show
@@ -46,14 +49,14 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find_by(id: params[:id])
         @recipe.destroy
         flash[:notice] = "投稿を削除しました"
-        redirect_to("/recipes/index")
+        redirect_to("/recipes")
     end
     
     def ensure_correct_user
         @recipe = Recipe.find_by(id: params[:id])
-        if @recipe.user_id != @current_user.id
+        if @recipe.user_id != current_user.id
           flash[:notice] = "権限がありません"
-          redirect_to("/recipes/index")
+          redirect_to("/recipes")
         end
     end
     
@@ -63,7 +66,7 @@ class RecipesController < ApplicationController
     
     private
         def recipe_params
-            params.require(:recipe).permit(:name, :materials, :method, :tag_list, :user_id, :genre, {images: []}).merge(user_id: current_user.id)
+            params.require(:recipe).permit(:name, :materials, :method, :tag_list, :user_id, :genre, :image).merge(user_id: current_user.id)
         end
     
 end

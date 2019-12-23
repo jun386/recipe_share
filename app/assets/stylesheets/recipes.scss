@@ -160,3 +160,148 @@
 .recipes_index:last-child {
   margin-bottom: 30px;
 }
+
+.recipe_show_img img {
+  width: 220px;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.recipe_index img {
+  width: 120px;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.recipe_show_img .present_image {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.recipe_index .image_container {
+  float: left;
+  margin-right: 10px;
+}
+
+.likes_recipe_wrapper {
+  margin-bottom: 20px;
+}
+
+.index_recipe_wrapper {
+  margin-bottom: 20px;
+}
+
+#recipe_bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.4);
+}
+
+#recipe_delete_alertbox {
+  margin: 300px auto 0;
+  text-align: center;
+  padding-top: 20px;
+  width: 300px;
+  height: 100px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+#close_btn {
+  margin-right: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+}
+
+#delete_btn {
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#delete_btn a {
+  color: #000;
+}
+
+#recipe_delete_btn {
+  background-color: #ff6347;
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-size: 15px;
+  display: block;
+  margin: 30px 0 30px;
+}
+
+#recipe_delete_btn:hover {
+  background-color: rgba(255, 99, 71, .7);
+}
+
+.recipe_user {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.recipe_user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.recipe_user a {
+  position: absolute;
+  top: 5px;
+  left: 290px;
+}
+
+.recipe_user i {
+  margin: 0;
+  width: 30px;
+  height: 30px;
+}
+
+.show_tag_container {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 0 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  background: #87CEEB;
+}
+
+.show_tag_container:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.recipe_show_tag {
+  margin-top: 10px;
+}
+
+.recipe_index_name {
+  color: #000;
+}
+
+.recipe_index_user_name {
+  color: #000;
+}
+
+.recipe_show {
+  position: relative;
+} 
+
+.recipe_show_updated_at {
+  position: absolute;
+  right: 0;
+  top: 310px;
+  font-size: 10px;
+}
+

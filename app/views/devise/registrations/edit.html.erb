@@ -31,7 +31,11 @@
     <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", :class => "form-control-area" %>
   </div>
 
-
+  <div class="field">
+    <%= f.label "写真" %> 
+    <%= f.file_field :image %>
+  </div>
+  
   <div class="field">
     <%= f.label "現在のパスワード", :class => "form-label4" %><br />
     <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control" %>

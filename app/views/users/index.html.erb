@@ -2,8 +2,14 @@
   <h1>ユーザー一覧</h1>
   <div class="user_index">
     <% @users.each do |user| %>
-      <p><%= link_to user.nickname, user_path(user.id) %></p>
-      <br>
+      <div class="user_index_clear">
+        <% if user.image.present? %>
+          <%= image_tag user.image %>
+        <% else %>
+          <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+        <% end %>
+        <%= link_to user.nickname, user_path(user.id) %>
+      </div>
     <% end %>
   </div>
 </div>

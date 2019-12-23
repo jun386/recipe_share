@@ -1,3 +1,140 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.room_index img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    float: left;
+    padding-top: 10px;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.room_index {
+    height: 90px;
+    position: relative;
+}
+
+.room_index i {
+    float: left;
+    margin: 0;
+    position: absolute;
+    left: 25px;
+    top: 15px;
+}
+
+.room_index a {
+    font-size: 30px;
+    position: absolute;
+    top: 25px;
+    left: 150px;
+}
+
+.room_index:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.room_index_container a {
+    text-decoration: none;
+}
+
+.to_room_related a {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    color: #000;
+    display: block;
+    width: 150px;
+    text-align: center;
+    background-color: #87CEEB;
+    margin-bottom: 20px;
+    margin: 0 0 0 auto;
+}
+
+.to_room_related a:hover {
+    background-color: rgba(137, 189, 222, .5 )
+}
+
+.room_index_wrapper {
+    margin-top: 20px;
+}
+
+.room_related img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    float: left;
+    padding-top: 10px;
+    margin-right: 50px;
+    margin-left: 30px;
+}
+
+.room_related {
+    height: 90px;
+    position: relative;
+}
+
+.room_related i {
+    float: left;
+    margin: 0;
+    position: absolute;
+    left: 25px;
+    top: 15px;
+}
+
+.room_related .related_name {
+    font-size: 30px;
+    text-decoration: none;
+    position: absolute;
+    top: 25px;
+    left: 150px;
+}
+
+.room_related:not(:last-child) {
+    border-bottom: 1px solid #000;
+}
+
+.room_related .to_show_related_btn {
+    display: block;
+    border: 1px solid #000;
+    border-radius: 5px;
+    width: 100px;
+    padding: 5px;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    position: absolute;
+    top: 30px;
+    left: 350px;
+    background-color: #87CEEB;
+    color: #000;
+}
+
+.room_related .to_show_related_btn:hover {
+    background-color: rgba(137, 189, 222, .5 )
+}
+
+.room_new_btn {
+    background-color: #87CEEB;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 333px;
+    font-size: 15px;
+}
+
+.room_new_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.room_show_text-center p{
+    text-align: center;
+    font-size: 25px;
+}
