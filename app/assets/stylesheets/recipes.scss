@@ -305,3 +305,19 @@
   font-size: 10px;
 }
 
+.recipe_new_btn {
+  background-color: #87CEEB;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-size: 15px;
+  display: block;
+  margin: 40px auto 40px;
+}
+
+.recipe_new_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
