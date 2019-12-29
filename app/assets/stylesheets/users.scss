@@ -23,7 +23,7 @@ h2 {
 .form-control-area {
     margin-top: 5px;
     margin-bottom: 10px;
-    width: 400px;
+    width: 450px;
     height: 100px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -331,4 +331,46 @@ h2 {
 
 .links a {
     text-decoration: none;
+}
+
+.radio_button {
+    cursor: pointer;
+}
+
+.img_up_btn {
+    cursor: pointer;
+}
+
+.user_info_update_btn {
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px;
+    display: block;
+    width: 130px;
+    text-align: center;
+    background-color: #87CEEB;
+    margin-bottom: 20px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.user_info_update_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.user_delete_btn {
+  background-color: #ff6347;
+  width: 180px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-size: 15px;
+  display: block;
+}
+
+.user_delete_btn:hover {
+  background-color: rgba(255, 99, 71, .7);
 }

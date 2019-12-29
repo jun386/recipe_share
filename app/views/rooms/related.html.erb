@@ -1,27 +1,31 @@
 <div class="container">
   <h1>相互フォロー一覧</h1>
-  <% @users.each do |user| %>
-    <div class="room_related">
-      <% if user.image.present? %>
-        <%= image_tag user.image %>
-      <% else %>
-        <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
-      <% end %>
-        <%= link_to(user.nickname, "/users/#{user.id}", :class => "related_name") %>
-      <% if @user_is_rooms[user.id] == true %>
-        <% @entries.each do |entry| %>
-           <% if entry.user_id == user.id %>
-            <a href="/rooms/<%= entry.room_id %>" class="to_show_related_btn">チャットへ</a>
-           <% end %>
+  <% if @users.present? %>
+    <% @users.each do |user| %>
+      <div class="room_related">
+        <% if user.image.present? %>
+          <%= image_tag user.image %>
+        <% else %>
+          <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
         <% end %>
-      <% else %>
-        <%= form_for @room do |f| %>
-          <%= fields_for @entry do |e| %>
-            <%= e.hidden_field :user_id, :value => user.id %>
+          <%= link_to(user.nickname, "/users/#{user.id}", :class => "related_name") %>
+        <% if @user_is_rooms[user.id] == true %>
+          <% @entries.each do |entry| %>
+             <% if entry.user_id == user.id %>
+              <a href="/rooms/<%= entry.room_id %>" class="to_show_related_btn">チャットへ</a>
+             <% end %>
           <% end %>
-          <%= f.submit "チャットを始める", :class => "room_new_btn" %>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value => user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", :class => "room_new_btn" %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+  <% else %>
+    <span class="non_related"><p>相互フォロワーがいません</p></span>
   <% end %>
 </div>

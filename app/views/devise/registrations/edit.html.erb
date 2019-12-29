@@ -13,19 +13,19 @@
     <%= f.label "ユーザーネーム", :class => "form-label1" %><br />
     <%= f.text_field :nickname , autocomplete: "nickname", :class => "form-control" %>
   </div>
-  
+  <br>
   <div class="field">
     <%= f.label "都道府県" %><br />
     <%= f.collection_select(:prefecture, Prefecture.all, :id, :name) %>
   </div>
-  
+  <br>
   <div class="field">
     <%= f.label "性別" %><br />
-    <label><%= f.radio_button :gender, "m" %>男性</label>
-    <label><%= f.radio_button :gender, "f" %>女性</label>
-    <label><%= f.radio_button :gender, "o" %>その他</label>
+    <label><%= f.radio_button :gender, "m", :class => "radio_button" %>男性</label>
+    <label><%= f.radio_button :gender, "f", :class => "radio_button" %>女性</label>
+    <label><%= f.radio_button :gender, "o", :class => "radio_button" %>その他</label>
   </div>
-  
+  <br>
   <div class="field">
     <%= f.label "自己紹介", :class => "form-label2" %><br />
     <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", :class => "form-control-area" %>
@@ -33,22 +33,21 @@
 
   <div class="field">
     <%= f.label "写真" %> 
-    <%= f.file_field :image %>
+    <%= f.file_field :image, :class => "img_up_btn" %>
   </div>
-  
+  <br>
   <div class="field">
     <%= f.label "現在のパスワード", :class => "form-label4" %><br />
     <%= f.password_field :current_password, autocomplete: "current-password", :class => "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "更新する", :class => "user_info_update_btn" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p><%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "user_delete_btn" %></p>
 
-<%= link_to "Back", :back %>
+<!--<= link_to "Back", :back %>-->
 </div>
