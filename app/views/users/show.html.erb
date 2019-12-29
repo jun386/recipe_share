@@ -61,6 +61,14 @@
                 <% msg = '材料:'%>
                 <%= msg %>
                 <%= recipe.materials %>
+                <% if recipe.tag_list.present? %>
+                    <div class="recipe_show_tag">
+                        <i class="fas fa-tags fa-fw"></i>
+                        <% recipe.tag_list.each do |tag| %>
+                          <%= link_to tag, recipes_path(tag_name: tag), :class => "show_tag_container" %>
+                        <% end %>
+                    </div>
+                <% end %>
                 <div class="recipe_updated_at">
                     <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
                 </div>

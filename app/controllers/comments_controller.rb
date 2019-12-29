@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    before_action :authenticate_user!, :only => [:create, :destroy]
+    
     def create
         @recipe = Recipe.find_by(id: params[:recipe_id])
         @comment = Comment.new(recipe_id: @recipe.id, content: params[:content], user_id: params[:user_id])
