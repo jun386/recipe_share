@@ -24,7 +24,7 @@
       
     <div class="field recipe_field">
       <%= f.label "タグ" %>
-      <%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control" %>
+      <%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control", placeholder: '和食,丼,・・・' %>
     </div>
     
     <div class="field recipe_field">
