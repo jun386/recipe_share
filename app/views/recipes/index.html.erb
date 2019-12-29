@@ -6,7 +6,9 @@
             <div class="recipe_index">
                 <% if recipe.image.present? %>
                     <div class="image_container">
-                        <%= image_tag recipe.image %>
+                        <%= link_to recipe_path(recipe.id) do %>
+                            <%= image_tag recipe.image %>
+                        <% end %>
                     </div>
                 <% else %>
                     <div class="no_image_container">
