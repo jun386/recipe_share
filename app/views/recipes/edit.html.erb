@@ -1,0 +1,39 @@
+<div class="container">
+    <h1>レシピの編集</h1>
+    
+    <%= form_for @recipe do |f| %>
+    <div class="field recipe_field">
+      <%= f.label '料理名' %>
+      <%= f.text_field :name, class: 'recipe_new_name', id: 'recipe_name' %>
+    </div>
+  
+    <div class="field recipe_field">
+      <%= f.label "ジャンル" %>  
+      <%= f.collection_select(:genre, Genre.all, :id, :name) %>
+    </div>
+    
+    <div class="field recipe_field materials">
+      <%= f.label "材料" %>
+      <%= f.text_area :materials, class: 'recipe_new_materials', id: 'recipe_name', placeholder: '人参、ほうれん草、・・・' %>
+    </div> 
+    
+    <div class="field recipe_field method">
+      <%= f.label "作り方" %>
+      <%= f.text_area :method, class: 'recipe_new_method', id: 'recipe_name', placeholder: text_placeholder %>
+    </div>    
+      
+    <div class="field recipe_field">
+      <%= f.label "タグ" %>
+      <%= f.text_field :tag_list, value: @recipe.tag_list.join(','), class: "form-control", placeholder: '和食,丼,・・・' %>
+    </div>
+    
+    <div class="field recipe_field">
+      <%= f.label "写真" %> 
+      <%= f.file_field :image, :class => "img_up_btn" %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "編集", class: "recipe_new_btn" %>
+    </div>
+  <% end %>
+</div>

@@ -321,3 +321,40 @@
 .recipe_new_btn:hover {
     background-color: rgba(137, 189, 222, .5 );
 }
+
+.recipe_edit_btn {
+    background-color: #87CEEB;
+    width: 100px;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    color: #000;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.recipe_edit_btn:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}
+
+.genre_search_container a {
+  text-decoration: none;
+  display: block;
+  background-color: #87CEEB;
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  font-size: 15px;
+  text-align: center;
+  margin: 0 auto 20px;
+}
+
+.genre_search_container a:hover {
+    background-color: rgba(137, 189, 222, .5 );
+}

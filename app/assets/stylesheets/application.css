@@ -95,6 +95,7 @@
 
 
 @media(max-width: 1000px){
+
     
     .logo {
         height: 20px;
@@ -131,9 +132,9 @@
        /*margin: 10px auto 0px;*/
     }
     
-    nav {
-        /*height: 415px;*/
-        margin-bottom: 10px;
+    #header_nav {
+        height: 65px;
+        /*margin-bottom: 10px;*/
     }
     
     .header-menus {

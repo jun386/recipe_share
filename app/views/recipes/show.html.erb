@@ -14,7 +14,9 @@
                 <% end %>
                 <div class="recipe_user">
                     <% if @recipe.user.image.present? %>
-                      <%= image_tag @recipe.user.image %>
+                        <%= link_to user_path(@recipe.user.id) do %>
+                          <%= image_tag @recipe.user.image %>
+                        <% end %>
                     <% else %>
                       <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
                     <% end %>
@@ -62,6 +64,7 @@
                     </div>
                 <% end %>
                 <% if current_user.id == @recipe.user.id %>
+                    <%= link_to("レシピの編集", "/recipes/#{@recipe.id}/edit", :class => "recipe_edit_btn") %>
                     <button id="recipe_delete_btn">レシピを削除する</button>
                     <div id="recipe_bg">
                         <div id="recipe_delete_alertbox">
@@ -72,6 +75,8 @@
                     </div>
                 <% end %>
             </div>
+        <% else %>
+            <p>レシピが存在しません</p>
         <% end %>
     </div>
 </div>

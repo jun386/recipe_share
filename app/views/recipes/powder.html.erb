@@ -1,5 +1,6 @@
 <div class="container">
-    <h1>検索結果</h1>
+    <h1>粉もの</h1>
+    <div class="recipes_index">
     <% if @recipes.present? %>
         <% @recipes.each do |recipe| %>
             <div class="recipe_index">
@@ -14,8 +15,8 @@
                         <p>No Image</p>
                     </div>
                 <% end %>
-                <%= link_to recipe.name, recipe_path(recipe.id) %><br>
-                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+                <%= link_to recipe.name, recipe_path(recipe.id), :class => "recipe_index_name" %><br>
+                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}", :class => "recipe_index_user_name") %>
                 <i class="fas fa-heart heart-red"></i>
                 <%= Like.where(recipe_id: recipe.id).count %><br>
                 <% msg = '材料:'%>
@@ -35,6 +36,9 @@
             </div>
         <% end %>
     <% else %>
-        <p>レシピはありません</p>
+        <p>レシピが一件もありません</p>
     <% end %>
+    </div>
 </div>
+
+    

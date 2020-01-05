@@ -4,7 +4,9 @@
     <% @users.each do |user| %>
       <div class="user_index_clear">
         <% if user.image.present? %>
-          <%= image_tag user.image %>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.image %>
+          <% end %>
         <% else %>
           <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
         <% end %>
