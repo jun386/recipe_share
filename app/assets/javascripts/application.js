@@ -26,7 +26,7 @@
         $("#toggle_bar").click(function(){
             click++;
             if ((click % 2) != 0){
-                $('#header_nav').css('height', '415px');
+                $('#header_nav').css('height', '465px');
                 $('#header_nav_signoff').css('height', '130px');
             } else {
                 $('#header_nav').css('height', '65px');
@@ -48,4 +48,5 @@
         $(".header-menus").css('display', 'none');
       }
     });
+    
     

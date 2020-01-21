@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>お問い合わせフォーム</h1>
+    <%= form_for @inquiry do |f| %>
+        <div class="field">
+          <%= f.label '名前', :class => "form_name" %>
+          <%= f.text_field :name, class: 'form-control', required: true %>
+        </div>
+        
+        <div class="field">
+          <%= f.label 'メールアドレス', :class => "form_name" %>
+          <%= f.text_field :email, class: 'form-control', required: true %>
+        </div>
+        
+        <div class="field">
+          <%= f.label "内容", :class => "form_name" %>
+          <%= f.text_area :content, class: 'form-control-area', required: true %>
+        </div> 
+        
+        <div class="actions inquiry_div">
+          <%= f.submit "送信", class: "inquiry_btn" %>
+        </div>
+    
+    <% end %>
+</div>

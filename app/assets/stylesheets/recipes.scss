@@ -39,6 +39,10 @@
   float: left;
 }
 
+.no_image_container p {
+  color: #000;
+}
+
 .heart-red{
   color:#e54747
 }
@@ -256,7 +260,7 @@
     border-radius: 50%;
 }
 
-.recipe_user a {
+.recipe_user .recipe_index_user_name {
   position: absolute;
   top: 5px;
   left: 290px;

@@ -56,3 +56,5 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'carrierwave'
 gem 'fog-aws'
+gem 'rails_admin', '~> 1.3'
+gem 'cancancan', '~> 2.0'

@@ -11,9 +11,11 @@
                         <% end %>
                     </div>
                 <% else %>
-                    <div class="no_image_container">
-                        <p>No Image</p>
-                    </div>
+                    <%= link_to recipe_path(recipe.id) do %>
+                        <div class="no_image_container">
+                            <p>No Image</p>
+                        </div>
+                    <% end %>
                 <% end %>
                 <%= link_to recipe.name, recipe_path(recipe.id), :class => "recipe_index_name" %><br>
                 <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}", :class => "recipe_index_user_name") %>

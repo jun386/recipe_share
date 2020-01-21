@@ -174,7 +174,7 @@ h2 {
     top: 15px;
 }
 
-.user_index_clear a {
+.user_index_clear .user_index_username {
     font-size: 30px;
     position: absolute;
     top: 25px;
@@ -373,4 +373,59 @@ h2 {
 
 .user_delete_btn:hover {
   background-color: rgba(255, 99, 71, .7);
+}
+
+.change_password_btn {
+    font-size: 15px;
+    width: 200px;
+    height: 50px;
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 20px auto 10px;
+}
+
+.change_password_btn:hover {
+    cursor: pointer;
+}
+
+.change_password_div {
+    text-align: center;
+}
+
+.confirmation_btn {
+    font-size: 15px;
+    width: 200px;
+    height: 50px;
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 20px auto 10px;
+}
+
+.confirmation_btn:hover {
+    cursor: pointer;
+}
+
+.password_reset_btn {
+    font-size: 15px;
+    width: 250px;
+    height: 50px;
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 20px auto 10px;
+}
+
+.password_reset_btn:hover {
+    cursor: pointer;
 }

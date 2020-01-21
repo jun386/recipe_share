@@ -45,4 +45,10 @@
   </div>
 </div>
 
-
+<script>
+  $(document).on('turbolinks:load', function() {
+    var obj;
+    obj = document.getElementById('line-bc');
+    obj.scrollTop = obj.scrollHeight;
+  });
+</script>

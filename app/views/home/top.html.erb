@@ -1,5 +1,10 @@
 <div class="main top-main">
   <div class="top-message">
+    <% if @home_image.present? %>
+      <%= image_tag @home_image.image.url %>
+    <% else %>
+      <img src="/top.jpg">
+    <% end %>
     <h1>Recipe-share</h1>
     <div class="button_wrapper">
         <p class="btn home_btn">

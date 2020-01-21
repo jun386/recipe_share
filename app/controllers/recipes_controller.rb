@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     
     def update
         @recipe = Recipe.find_by(id: params[:id])
-        if @recipe.update(recipe_params)
+        if @recipe.update(params.require(:recipe).permit(:name, :materials, :method, :tag_list, :user_id, :genre, :image).merge(user_id: @recipe.user_id))
             redirect_to recipe_path(@recipe.id)
         else
             flash[:alert] = "レシピが編集できませんでした"
@@ -57,14 +57,6 @@ class RecipesController < ApplicationController
         @recipe.destroy
         flash[:notice] = "投稿を削除しました"
         redirect_to("/recipes")
-    end
-    
-    def ensure_correct_user
-        @recipe = Recipe.find_by(id: params[:id])
-        if @recipe.user_id != current_user.id
-          flash[:notice] = "権限がありません"
-          redirect_to("/recipes")
-        end
     end
     
     def recipe_search
@@ -114,5 +106,15 @@ class RecipesController < ApplicationController
         def recipe_params
             params.require(:recipe).permit(:name, :materials, :method, :tag_list, :user_id, :genre, :image).merge(user_id: current_user.id)
         end
+        
+        def ensure_correct_user
+            @recipe = Recipe.find_by(id: params[:id])
+            if (@recipe.user_id == current_user.id || current_user.admin == true)
+            else
+              flash[:notice] = "権限がありません"
+              redirect_to("/recipes")
+            end
+        end
+    
     
 end

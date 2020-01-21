@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>トップ画像変更</h1>
+    <%= form_for @home_image,:url => {:action => :create} do |f| %>
+    
+        <div class="field recipe_field">
+          <%= f.label "写真" %> 
+          <%= f.file_field :image, :class => "img_up_btn" %>
+        </div>
+    
+        <div class="actions">
+          <%= f.submit "変更", class: "recipe_new_btn" %>
+        </div>
+    <% end %>
+</div>

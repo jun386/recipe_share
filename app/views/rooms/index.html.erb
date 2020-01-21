@@ -7,13 +7,15 @@
         <% @another_entries.each do |e| %>
           <div class="room_index">
             <% if e.user.image.present? %>
-              <%= link_to user_path(e.user.id) do %>
+              <%= link_to room_path(e.room_id) do %>
                 <%= image_tag e.user.image %>
               <% end %>
             <% else %>
-              <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+              <%= link_to room_path(e.room_id) do %>
+                <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+              <% end %>
             <% end %>
-            <%= link_to room_path(e.room_id) do %>
+            <%= link_to room_path(e.room_id), class: "room_index_username" do %>
               <%= e.user.nickname %>
             <% end %>
           </div>

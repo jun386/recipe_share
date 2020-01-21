@@ -1,0 +1,33 @@
+<div class="inquiries_container">
+    <h1>お問い合わせ一覧</h1>
+    <table border="1">
+        <tr>
+            <th>名前</th>
+            <th class="inquiries_mail">メールアドレス</th>
+            <th>内容</th>
+            <th>回答</th>
+        </tr>
+    <% if @inquiries.present? %>
+        <% @inquiries.each do |inquiry| %>
+            <tr class="inquiry_tr">
+                <td class="inquiries_name"><%=inquiry.name %></td>
+                <td class="inquiries_mail"><%=inquiry.email %></td>
+                <td class="inquiries_content">
+                    <p class="inquiry_content"><%=link_to inquiry.content, new_inquiry_answer_path(inquiry.id) %></p>
+                    <p class="inquiry_create_at"><%= inquiry.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                </td>
+                <td class="inquiries_answer">
+                    <% @answers = Answer.where(inquiry_id: inquiry.id) %>
+                    <% if @answers.present? %>
+                      <% @answers.each do |answer| %>
+                        <p class="answer_content"><%= answer.content %></p>
+                        <p class="answer_create_at"><%= answer.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                        <br>
+                      <% end %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    <% end %>
+    </table>
+</div>
