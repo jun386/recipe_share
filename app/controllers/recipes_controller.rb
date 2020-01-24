@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
     before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
     
     def index
-        @recipes = Recipe.all.order(created_at: :desc)
+        @recipes = Recipe.paginate(page: params[:page], per_page: 10).order(created_at: :desc)
         if params[:tag_name]
           @recipes = @recipes.tagged_with("#{params[:tag_name]}")
         end
@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
         if @recipe
          @user = @recipe.user
          @likes_count = Like.where(recipe_id: @recipe.id).count
-         @comments = @recipe.comments
+         @comments = @recipe.comments.order(created_at: :desc)
         end
         
     end

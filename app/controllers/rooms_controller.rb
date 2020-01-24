@@ -42,7 +42,7 @@ class RoomsController < ApplicationController
       @message = Message.new
       @entries = @room.entries
     else
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
       flash[:alert] = "無効なユーザー"
     end
     @current_entries = current_user.entries

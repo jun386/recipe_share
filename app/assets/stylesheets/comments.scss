@@ -56,8 +56,19 @@
 .comment_form_input {
     width: 300px;
     height: 20px;
+    border: 0.5px solid #000;
 }
 
 .comment_btn {
     cursor: pointer;
+}
+
+.comments_container {
+  height: 400px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.comments_container span p {
+    text-align: center;
 }

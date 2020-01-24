@@ -161,3 +161,28 @@
 .line-bc {
   overflow-x: hidden;
 }
+
+@media(max-width: 959px) {
+  
+}
+
+@media(max-width: 480px) {
+  
+  .container-message {
+    width: 300px;
+  }
+  
+  .says {
+    max-width: 120px;
+  }
+  
+  .says p {
+    font-size: 12px;
+  }
+  
+  .mycomment p {
+    max-width: 120px;
+    font-size: 12px;
+  }
+  
+}

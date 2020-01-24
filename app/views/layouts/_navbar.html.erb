@@ -1,0 +1,91 @@
+<% if user_signed_in? %>
+  <nav id="header_nav">
+<% else %>
+  <nav id="header_nav_signoff">
+<% end %>
+  <div class="logo">
+    <li>
+      <%= link_to("Recipe-share", "/")%>
+    </li>
+  </div>
+  <i class="fas fa-bars fa-2x" id="toggle_bar"></i>
+  <ul class="header-menus">
+    <div class="header_user_login">
+    <% if user_signed_in? && current_user.admin != true %>
+      <li class="header-search">
+        <%= form_tag("/recipes/recipe_search") do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to(current_user.nickname, "/users/#{current_user.id}") %>
+      </li>
+      <li>
+        <%= link_to("投稿一覧", "/recipes") %>
+      </li>
+      <li>
+        <%= link_to("カテゴリ検索", "/recipes/genre_search") %>
+      </li>
+      <li>
+        <%= link_to("新規投稿", "/recipes/new") %>
+      </li>
+      <li>
+        <%= link_to("ユーザー一覧", "/users") %>
+      </li>
+      <li>
+        <%= link_to("メッセージ", "/rooms") %>
+      </li>
+      <li>
+        <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+      </li>
+    <% elsif user_signed_in? && current_user.admin == true %>
+      <li class="header-search">
+      <%= form_tag("/recipes/recipe_search") do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
+      <% end %>
+      </li>
+      <li>
+        <%= link_to("投稿一覧", "/recipes") %>
+      </li>
+      <li>
+        <%= link_to("カテゴリ検索", "/recipes/genre_search") %>
+      </li>
+      <li>
+        <%= link_to("新規投稿", "/recipes/new") %>
+      </li>
+      <li>
+        <%= link_to("ユーザー一覧", "/users") %>
+      </li>
+      <li>
+        <%= link_to("メッセージ", "/rooms") %>
+      </li>
+      <li class="admin-menu">
+        <a href="#">管理者メニュー</a>
+          <ul>
+            <li>
+              <%= link_to(current_user.nickname, "/users/#{current_user.id}") %>
+            </li>
+            <li>
+              <%= link_to("お問い合わせ一覧", " /inquiries") %>
+            </li>
+            <li>
+              <%= link_to("管理者ページ", " /admin", target: :_blank) %>
+            </li>
+            <li>
+              <%= link_to("トップ画像の変更", " /home/new") %>
+            </li>
+          </ul>
+      </li>
+      <li>
+        <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
+      </li>
+    </div>
+    <% else %>
+      <li>
+        <%= link_to("ログイン", new_user_session_path) %>
+      </li>
+    <% end %>
+  </ul>
+</nav>

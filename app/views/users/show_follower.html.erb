@@ -8,9 +8,11 @@
             <%= image_tag user.image %>
           <% end %>
         <% else %>
-          <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+          <%= link_to user_path(user.id) do %>
+            <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+          <% end %>
         <% end %>
-        <%= link_to user.nickname, user_path(user.id) %>
+        <%= link_to user.nickname, user_path(user.id), class: "user_index_username" %>
       </div>
     <% end %>
   </div>

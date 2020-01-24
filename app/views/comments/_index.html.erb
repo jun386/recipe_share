@@ -1,18 +1,26 @@
 <div class="comments_container">
-    <% @comments.each do |comment|%>
-    <div class="comment_container">
-        <% unless comment.id.nil? %>
-            <% if comment.user.image.present? %>
-              <%= image_tag comment.user.image %>
-            <% else %>
-              <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+    <% if @comments.present? %>
+        <% @comments.each do |comment|%>
+        <div class="comment_container">
+            <% unless comment.id.nil? %>
+                <% if comment.user.image.present? %>
+                  <%= link_to user_path(comment.user.id) do %>
+                      <%= image_tag comment.user.image %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_path(comment.user.id) do %>
+                      <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+                  <% end %>
+                <% end %>
+                <%= link_to "#{comment.user.nickname}", user_path(comment.user.id) , :class => "comment_name" %>
+                <p class="comment_content"><%= comment.content %></p>
+                <% if comment.user == current_user || current_user.admin == true %>
+                    <%= link_to'コメントを削除する', recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, :class => "comment_delete" %>
+                <% end %>
             <% end %>
-            <%= link_to "#{comment.user.nickname}", user_path(comment.user.id) , :class => "comment_name" %>
-            <p class="comment_content"><%= comment.content %></p>
-            <% if comment.user == current_user %>
-                <%= link_to'コメントを削除する', recipe_comment_path(comment.recipe_id, comment.id), method: :delete, remote: true, :class => "comment_delete" %>
-            <% end %>
+        </div>
         <% end %>
-    </div>
+    <% else %>
+        <span><p>コメントはありません</p></span>
     <% end %>
 </div>

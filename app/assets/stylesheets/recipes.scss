@@ -156,11 +156,6 @@
   margin-right: 30px;
 }
 
-.container h1 {
-  margin-top: 40px;
-  font-weight: normal;
-}
-
 .recipes_index:last-child {
   margin-bottom: 30px;
 }
@@ -361,4 +356,122 @@
 
 .genre_search_container a:hover {
     background-color: rgba(137, 189, 222, .5 );
+}
+
+.recipes_index {
+  height: 700px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+
+@media(max-width: 959px) {
+  .recipes_index {
+    height: 590px;
+  }
+}
+
+
+@media(max-width: 480px) {
+  
+    .recipes_index:last-child {
+      margin-bottom: 0px;
+    }
+    
+    .no_image_container {
+      width: 100px;
+    }
+    
+    .recipe_index img {
+      width: 100px;
+    }
+    
+    .materials_index {
+      font-size: 12px;
+    }
+    
+    .show_tag_container {
+      font-size: 12px;
+    }
+    
+    .show_no_image {
+      width: 150px;
+      height: 180px;
+    }
+    
+    .recipe_show_img img {
+      width: 220px;
+      height: 250px;
+      border-radius: 5px;
+    }
+    
+    .recipe_show_updated_at {
+      top: 270px;
+    }
+    
+    .comments_container {
+      height: 200px;
+      margin-bottom: 10px;
+    }
+    
+    .comment_form_input {
+      width: 190px;
+    }
+    
+    .comment_btn {
+      width: 100px;
+    }
+    
+    .recipe_user .recipe_index_user_name {
+      position: absolute;
+      top: 5px;
+      left: 230px;
+    }
+    
+    .show_tag_container {
+      margin-left: 3px;
+    }
+    
+    .recipe_show_tag {
+      overflow-x: auto;
+    }
+    
+    .recipe_show_img img {
+      width: 150px;
+      height: 180px;
+      border-radius: 5px;
+    }
+    
+    .recipe_user img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+    
+    .recipe_new_materials {
+      margin-left: 0px !important;
+      margin-top: 10px;
+      width: 300px;
+      height: 150px;
+    }
+    
+    .recipe_new_method {
+      width: 300px;
+      height: 250px;
+      margin-left: 0px !important;
+      margin-top: 10px;
+    }
+    
+    .recipe_new_method_name::after {
+      content: "\A" ;
+      white-space: pre ;
+    }
+    
+
+
+ 
+
+
+
 }

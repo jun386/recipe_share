@@ -136,19 +136,49 @@ footer p {
     width: 112px;
 }
 
-.header_user_login li:hover ul li{
+/*.admin-menu:hover ul li{*/
+/*    margin-top: 0;*/
+/*    display: block;*/
+/*}  */
+
+
+#header_nav > ul > div > li.admin-menu:hover ul li{
     margin-top: 0;
     display: block;
-}
+}  
 
 .header_user_login li:hover ul li:first-child {
     margin-top: 20px;
 }
 
+.pagination ul {
+    padding: 0;
+}
 
-@media(max-width: 1000px){
+.pagination ul li {
+    display: inline-block;
+    background-color: grey;
+    width: 30px;
+    height: 30px;
+    list-style: none;
+    border-radius: 50%;
+}
 
-    
+.pagination a {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding-top: 3px;
+}
+
+
+.pagination li:hover {
+  background: #93c9ff;
+}
+
+@media screen and (max-width: 959px) {
+
     .logo {
         height: 20px;
     }
@@ -157,7 +187,6 @@ footer p {
        margin: 0px auto;
        padding-top: 15px;
        padding-bottom: 10px;
-       /*width: 50%;*/
        text-align: center;
    }
     
@@ -181,12 +210,14 @@ footer p {
 
     body > nav > ul > div > li.header-search {
        padding-top: 10px;
-       /*margin: 10px auto 0px;*/
     }
     
     #header_nav {
         height: 65px;
-        /*margin-bottom: 10px;*/
+    }
+    
+    #header_nav_signoff {
+        height: 65px;
     }
     
     .header-menus {
@@ -213,8 +244,47 @@ footer p {
         border-style: hidden;
         border-top: 1px solid lightgray;
     }
+    
+    .application_wrapper {
+        min-height: 0px;
+        height: 715px;
+    }
+    
+    
+    #header_nav > ul > div > li.admin-menu:hover ul li{
+        margin-top: 0;
+        display: block;
+    }  
+    
+
 }
 
-@media(max-width: 600px){
+@media screen and (max-width: 480px) {
+
+    .application_wrapper {
+        height: 691px;
+        overflow: auto;
+    }
+    
+    footer {
+        height: 56px;
+    }
+    
+    footer p {
+        font-size: 12px;
+    }
+    
+    footer a {
+        font-size: 12px;
+    }
+    
+    .footer_container {
+        height: 56px;
+    }
+    
+    #header_nav > ul > div > li.admin-menu:hover ul li{
+        margin-top: 0;
+        display: block;
+    }  
     
 }

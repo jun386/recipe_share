@@ -59,9 +59,16 @@ h2 {
 }
 
 .container {
-    // background-color: pink;
     width: 500px;
     margin: 0 auto;
+}
+
+.container h1 {
+//   margin-top: 40px;
+  margin-top: 0;
+  padding-top: 40px;
+  margin-bottom: 20px;
+  font-weight: normal;
 }
 
 .user-info {
@@ -428,4 +435,56 @@ h2 {
 
 .password_reset_btn:hover {
     cursor: pointer;
+}
+
+.index_recipe_wrapper {
+  height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.likes_recipe_wrapper {
+  height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+
+@media(max-width: 959px) {
+  
+}
+
+
+@media(max-width: 480px) {
+    .container {
+        width: 300px;
+    }
+    
+    .container h1 {
+        font-size: 25px;
+    }
+    
+    .form-control {
+        width: 280px;
+        height: 25px;
+    }
+    
+    .form-control-area {
+        width: 280px;
+        height: 100px;
+    }
+    
+    .links a {
+        font-size: 12px;
+    }
+    
+    .user_index_clear {
+        overflow: scroll;
+    }
+    
+    .user_index_clear::-webkit-scrollbar {
+        display: none;
+        -webkit-appearance: none;
+    }
+
 }

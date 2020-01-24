@@ -4,7 +4,7 @@
   <%= form_for @recipe do |f| %>
     <div class="field recipe_field">
       <%= f.label '料理名' %>
-      <%= f.text_field :name, class: 'recipe_new_name', id: 'recipe_name' %>
+      <%= f.text_field :name, class: 'recipe_new_name', id: 'recipe_name', required: true %>
     </div>
   
     <div class="field recipe_field">
@@ -13,13 +13,13 @@
     </div>
     
     <div class="field recipe_field materials">
-      <%= f.label "材料" %>
-      <%= f.text_area :materials, class: 'recipe_new_materials', id: 'recipe_name', placeholder: '人参、ほうれん草、・・・' %>
+      <span class="recipe_new_method_name"><%= f.label "材料" %></span>
+      <%= f.text_area :materials, class: 'recipe_new_materials', id: 'recipe_name', placeholder: '人参、ほうれん草、・・・', required: true %>
     </div> 
     
     <div class="field recipe_field method">
-      <%= f.label "作り方" %>
-      <%= f.text_area :method, class: 'recipe_new_method', id: 'recipe_name', placeholder: text_placeholder %>
+      <span class="recipe_new_method_name"><%= f.label "作り方" %></span>
+      <%= f.text_area :method, class: 'recipe_new_method', id: 'recipe_name', placeholder: text_placeholder, required: true %>
     </div>    
       
     <div class="field recipe_field">

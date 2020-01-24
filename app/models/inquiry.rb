@@ -1,3 +1,3 @@
 class Inquiry < ApplicationRecord
-    has_one :answers, :dependent => :destroy
+    has_many :answers, :dependent => :destroy
 end
