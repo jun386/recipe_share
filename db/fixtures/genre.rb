@@ -8,4 +8,5 @@ Genre.seed(:id,
     { id: 7, name: "シチュー・スープ・汁物"},
     { id: 8, name: "サラダ"},
     { id: 9, name: "粉もの"},
+    { id: 10, name: "その他"},
 )

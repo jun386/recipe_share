@@ -1,19 +1,23 @@
 <div class="container">
   <h1>フォロー一覧</h1>
   <div class="user_index">
-    <% @users.each do |user| %>
-      <div class="user_index_clear">
-        <% if user.image.present? %>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.image %>
+    <% if @users.present? %>
+      <% @users.each do |user| %>
+        <div class="user_index_clear">
+          <% if user.image.present? %>
+            <%= link_to user_path(user.id) do %>
+              <%= image_tag user.image %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(user.id) do %>
+              <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to user_path(user.id) do %>
-            <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
-          <% end %>
-        <% end %>
-        <%= link_to user.nickname, user_path(user.id), class: "user_index_username" %>
-      </div>
+          <%= link_to user.nickname, user_path(user.id), class: "user_index_username" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p>フォローしているユーザーがいません</p>
     <% end %>
   </div>
 </div>

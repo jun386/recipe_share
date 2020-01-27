@@ -67,39 +67,43 @@ class RecipesController < ApplicationController
     end
     
     def vegetable
-        @recipes = Recipe.where(genre: "1")
+        @recipes = Recipe.where(genre: "1").paginate(page: params[:page], per_page: 10)
     end
     
     def meat
-        @recipes = Recipe.where(genre: "2")
+        @recipes = Recipe.where(genre: "2").paginate(page: params[:page], per_page: 10)
     end
     
     def fish
-        @recipes = Recipe.where(genre: "3")
+        @recipes = Recipe.where(genre: "3").paginate(page: params[:page], per_page: 10)
     end
     
     def rice
-        @recipes = Recipe.where(genre: "4")
+        @recipes = Recipe.where(genre: "4").paginate(page: params[:page], per_page: 10)
     end
     
     def pasta_gratin
-        @recipes = Recipe.where(genre: "5")
+        @recipes = Recipe.where(genre: "5").paginate(page: params[:page], per_page: 10)
     end
     
     def noodles
-        @recipes = Recipe.where(genre: "6")
+        @recipes = Recipe.where(genre: "6").paginate(page: params[:page], per_page: 10)
     end
     
     def soup
-        @recipes = Recipe.where(genre: "7")
+        @recipes = Recipe.where(genre: "7").paginate(page: params[:page], per_page: 10)
     end
     
     def salad
-        @recipes = Recipe.where(genre: "8")
+        @recipes = Recipe.where(genre: "8").paginate(page: params[:page], per_page: 10)
     end
     
     def powder
-        @recipes = Recipe.where(genre: "9")
+        @recipes = Recipe.where(genre: "9").paginate(page: params[:page], per_page: 10)
+    end
+    
+    def other
+        @recipes = Recipe.where(genre: "10").paginate(page: params[:page], per_page: 10)
     end
     
     private

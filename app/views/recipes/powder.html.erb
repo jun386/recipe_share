@@ -1,6 +1,7 @@
 <div class="container">
     <h1>粉もの</h1>
     <div class="recipes_index">
+    <%= will_paginate @recipes, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
     <% if @recipes.present? %>
         <% @recipes.each do |recipe| %>
             <div class="recipe_index">
@@ -35,6 +36,7 @@
                 </div>
             </div>
         <% end %>
+    <%= will_paginate @recipes, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
     <% else %>
         <p>レシピが一件もありません</p>
     <% end %>

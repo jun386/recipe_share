@@ -40,6 +40,7 @@ Rails.application.routes.draw do
           get :soup
           get :salad
           get :powder
+          get :other
         end
   end
   resources :recipes do
