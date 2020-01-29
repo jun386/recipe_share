@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     def destroy
         @comment = Comment.find_by(id: params[:id])
         if @comment.destroy
-            # flash[:notice] = "コメントを削除しました"
+            flash[:notice] = "コメントを削除しました"
             redirect_to :back
         end
     end

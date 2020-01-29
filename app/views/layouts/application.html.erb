@@ -12,6 +12,11 @@
 
   <body ontouchstart="" data-turbolinks="false">
       <%= render 'layouts/navbar' %>
+      <% flash.each do |message_type, message| %>
+      <div class="notifications">
+        <%= content_tag(:div, message, class: "#{message_type}") %>
+      </div>
+      <% end %>
       <div class="application_wrapper">
         <%= yield %>
       </div>

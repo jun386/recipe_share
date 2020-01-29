@@ -172,10 +172,27 @@ footer p {
     padding-top: 3px;
 }
 
-
 .pagination li:hover {
   background: #93c9ff;
 }
+
+.notifications {
+    color: #fff;
+  text-align: center;
+}
+
+.notice {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: lightskyBlue;
+}
+    
+.alert {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: orange;
+}
+
 
 @media screen and (max-width: 959px) {
 
