@@ -3,6 +3,8 @@
     <% if @home_image.present? %>
       <%= image_tag @home_image.image.url %>
     <% else %>
+      <!--< video_tag "/food.mp4", :controls => true,  :autoplay => true , :loop => true %>-->
+      <!--<source srcset="https://www.kopjapan.com/wp-content/uploads/2016/05/beautiful-woman-sp.jpg" media="(max-width: 767px)">-->
       <img src="/top.jpg">
     <% end %>
     <h1>Recipe-share</h1>
