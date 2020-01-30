@@ -60,7 +60,7 @@
 }
 
 .header-search form #search {
-    width: 250px;
+    width: 200px;
     height: 25px;
     /*-webkit-border-radius: 3px;*/
     /*-moz-border-radius: 3px;*/
@@ -194,7 +194,7 @@ footer p {
 }
 
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 1238px) {
 
     .logo {
         height: 20px;

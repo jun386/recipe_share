@@ -40,7 +40,7 @@
     $win.on('load resize', function() {
       var windowWidth = window.innerWidth;
     
-      if (windowWidth > 1000) {
+      if (windowWidth > 1238) {
         $(".header-menus").css('display', 'block');
         $('#header_nav').css('height', '65px');
         $('#header_nav_signoff').css('height', '65px');
