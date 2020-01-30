@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
       @entries = @room.entries
     else
       redirect_back(fallback_location: root_path)
-      flash[:alert] = "無効なユーザー"
+      flash[:alert] = "無効なユーザーです"
     end
     @current_entries = current_user.entries
     @another_entries = Entry.where(room_id: @room.id).where('user_id != ?', current_user.id)
