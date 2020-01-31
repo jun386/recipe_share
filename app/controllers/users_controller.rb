@@ -33,7 +33,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 10).order(id: :asc)
+    @users_related = User.where(id: current_user.followings & current_user.followers)
+    @users_following = User.where(id: current_user.followings).where.not(id: current_user.followers)
+    @users_followers = User.where(id: current_user.followers).where.not(id: current_user.followings)
+    @users = User.where.not(id: current_user.followers).where.not(id: current_user.followings).where.not(id: current_user)
   end
   
   def following

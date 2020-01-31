@@ -34,7 +34,7 @@
     text-decoration: none;
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 18px;
     color: #000;
 }
 
@@ -273,7 +273,11 @@ footer p {
     #header_nav > ul > div > li.admin-menu:hover ul li{
         margin-top: 0;
         display: block;
-    }  
+    }
+    
+    .application_wrapper {
+        overflow: auto;
+    }
     
 
 }

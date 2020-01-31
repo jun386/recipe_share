@@ -80,3 +80,34 @@
 .answer_content {
     margin-left: 5px;
 }
+
+
+@media(max-width: 959px) {
+  .inquiries_container {
+      margin: 0 auto;
+      width: 700px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .inquiries_container {
+    margin: 0 auto;
+    width: 350px;
+  }
+  
+  .inquiries_container h1 {
+      font-size: 25px;
+  }
+  
+  .inquiries_container p {
+      font-size: 8px;
+  }
+  
+  .inquiries_container tr th {
+      font-size: 11px;
+  }
+  
+  .inquiries_container tr td {
+      font-size: 11px;
+  }
+}

@@ -160,6 +160,15 @@
   margin-bottom: 30px;
 }
 
+.recipe_index a {
+  overflow: auto;
+}
+
+.recipe_index a::-webkit-scrollbar {  
+        display:none;
+    }
+
+
 .recipe_show_img img {
   width: 220px;
   height: 250px;
