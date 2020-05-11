@@ -1,5 +1,14 @@
 <div class="container">
   <h1>ログイン</h1>
+  <div class="example-user">
+    <h3>example-user</h3>
+    <dl>
+      <dt>メールアドレス</dt>
+      <dd>example.recipe.share@gmail.com</dd>
+      <dt>パスワード</dt>
+      <dd>111111</dd>
+    </dl>
+  </div>
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">

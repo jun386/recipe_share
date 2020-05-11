@@ -6,6 +6,19 @@ h2 {
     font-size: 30px;
 }
 
+.example-user {
+    border: 1px solid #000;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+.example-user dl dt {
+    margin-bottom: 10px;
+}
+
+.example-user dl dd {
+    margin-bottom: 10px;
+}
 
 .form-control {
     margin-top: 5px;
