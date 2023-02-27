@@ -27,4 +27,9 @@ module UsersHelper
             "該当なし2"
         end
     end
+
+    def following_check(user_id)
+      users = User.where(id: current_user.followings & current_user.followers).pluck(:id)
+      users.include?(user_id)
+    end
 end

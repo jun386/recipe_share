@@ -18,8 +18,8 @@
 
       <% if @user.id != current_user.id %>
         <div class="message_create">
-          <% if @following_check == true %>
-            <% if @isRoom == true %>
+          <% if following_check(@user.id) %>
+            <% if @isRoom %>
               <p><a href="/rooms/<%= @roomId %>", class="user_show_to_room_btn">チャットへ</a>
             <% else %>
               <%= form_for @room do |f| %>
