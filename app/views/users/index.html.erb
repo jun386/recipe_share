@@ -3,52 +3,6 @@
   <div class="user_index">
     <!--<= will_paginate @users, previous_label: '<', next_label: '>',-->
     <!--inner_window: 1, outer_window: 0 %>-->
-    <h1>相互フォロー一覧</h1>
-    <% @users_related.each do |user| %>
-      <div class="user_index_clear">
-        <% if user.image.present? %>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.image %>
-          <% end %>
-        <% else %>
-          <%= link_to user_path(user.id) do %>
-            <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
-          <% end %>
-        <% end %>
-        <%= link_to user.nickname, user_path(user.id), class: "user_index_username" %>
-      </div>
-    <% end %>
-    <h1>フォロワー一覧</h1>
-    <% @users_followers.each do |user| %>
-      <div class="user_index_clear">
-        <% if user.image.present? %>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.image %>
-          <% end %>
-        <% else %>
-          <%= link_to user_path(user.id) do %>
-            <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
-          <% end %>
-        <% end %>
-        <%= link_to user.nickname, user_path(user.id), class: "user_index_username" %>
-      </div>
-    <% end %>
-    <h1>フォロー一覧</h1>
-    <% @users_following.each do |user| %>
-      <div class="user_index_clear">
-        <% if user.image.present? %>
-          <%= link_to user_path(user.id) do %>
-            <%= image_tag user.image %>
-          <% end %>
-        <% else %>
-          <%= link_to user_path(user.id) do %>
-            <i class="fas fa-user-circle fa-4x fa-fw my-skyblue"></i>
-          <% end %>
-        <% end %>
-        <%= link_to user.nickname, user_path(user.id), class: "user_index_username" %>
-      </div>
-    <% end %>
-    <h1>その他のユーザー一覧</h1>
     <% @users.each do |user| %>
       <div class="user_index_clear">
         <% if user.image.present? %>

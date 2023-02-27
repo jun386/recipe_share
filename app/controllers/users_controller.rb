@@ -18,10 +18,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users_related = User.where(id: current_user.followings & current_user.followers)
-    @users_following = User.where(id: current_user.followings).where.not(id: current_user.followers)
-    @users_followers = User.where(id: current_user.followers).where.not(id: current_user.followings)
-    @users = User.where.not(id: current_user.followers).where.not(id: current_user.followings).where.not(id: current_user)
+    @users = User.where.not(id: current_user)
   end
   
   def following
