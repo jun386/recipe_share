@@ -1,8 +1,6 @@
 <div class="container">
   <h1>ユーザー一覧</h1>
   <div class="user_index">
-    <!--<= will_paginate @users, previous_label: '<', next_label: '>',-->
-    <!--inner_window: 1, outer_window: 0 %>-->
     <% @users.each do |user| %>
       <div class="user_index_clear">
         <% if user.image.present? %>
@@ -18,4 +16,5 @@
       </div>
     <% end %>
   </div>
+  <%= will_paginate @users, previous_label: '<', next_label: '>', inner_window: 1, outer_window: 0 %>
 </div>
