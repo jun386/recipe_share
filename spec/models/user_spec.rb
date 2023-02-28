@@ -46,6 +46,10 @@ RSpec.describe User, type: :model do
     it "Commentモデルとの関連付け" do
       expect(User.reflect_on_association(:comments).macro).to eq :has_many
     end
+
+    it "Likeモデルとの関連付け" do
+      expect(User.reflect_on_association(:likes).macro).to eq :has_many
+    end
   end
     
   describe "フォロー機能" do
