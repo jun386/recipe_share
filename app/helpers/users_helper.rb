@@ -7,7 +7,7 @@ module UsersHelper
         if id.present?
             Prefecture.find_by(id: id).name
         else
-            "該当なし"
+            "設定されていません"
         end
     end
     
@@ -21,10 +21,10 @@ module UsersHelper
             when "o"
               "その他"
             else
-              "該当なし1"
+              "性別が設定されていません"
             end
         else
-            "該当なし2"
+            "性別が設定されていません"
         end
     end
 
