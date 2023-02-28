@@ -17,4 +17,14 @@ RSpec.describe Like, type: :model do
       expect(like).to eq(true)
     end
   end
+
+  describe 'アソシエーション' do
+    it "Userモデルとの関連付け" do
+      expect(Like.reflect_on_association(:user).macro).to eq :belongs_to
+    end
+
+    it "Recipeモデルとの関連付け" do
+      expect(Like.reflect_on_association(:recipe).macro).to eq :belongs_to
+    end
+  end
 end
