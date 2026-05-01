@@ -1,86 +1,84 @@
 <div class="container">
-    <div class="recipe_show">
-        <% if @recipe.present? %>
-            <h1><%= @recipe.name %></h1>
-            <div class="recipe_show_img">
-                <% if @recipe.image.present? %>
-                    <div class="present_image">
-                        <%= image_tag @recipe.image %>
-                    </div>
-                <% else %>
-                    <div class="show_no_image">
-                        <p>No Image</p>
-                    </div>
-                <% end %>
-                <div class="recipe_user">
-                    <% if @recipe.user.image.present? %>
-                        <%= link_to user_path(@recipe.user.id) do %>
-                          <%= image_tag @recipe.user.image %>
-                        <% end %>
-                    <% else %>
-                        <%= link_to user_path(@recipe.user.id) do %>
-                          <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
-                        <% end %>
-                    <% end %>
-                    <%= link_to(@recipe.user.nickname, "/users/#{@recipe.user.id}", :class => "recipe_index_user_name") %>
-                </div>
-                <% if Like.find_by(user_id: current_user.id, recipe_id: @recipe.id) %>
-                    <%= link_to("/likes/#{@recipe.id}/destroy", {method: "recipe"}) do %>
-                      <span class="fa fa-heart like-btn-unlike"></span>
-                    <% end %>
-                <% else %>
-                    <%= link_to("/likes/#{@recipe.id}/create", {method: "recipe"}) do %>
-                      <span class="fa fa-heart like-btn"></span>
-                    <% end %>
-                <% end %>
-                <span class="likes_count"><%= @likes_count %></span>
-                <% if @recipe.tag_list.present? %>
-                    <div class="recipe_show_tag">
-                        <i class="fas fa-tags fa-fw"></i>
-                        <% @recipe.tag_list.each do |tag| %>
-                          <%= link_to tag, recipes_path(tag_name: tag), :class => "show_tag_container" %>
-                        <% end %>
-                    </div>
-                <% end %>
-                <div class="recipe_show_updated_at">
-                    <%= @recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
-                </div>
-            </div>
-            <div class="clear">
-                <h4>材料</h4>
-                <p><%= @recipe.materials %></p>
-                <h4>作り方</h4>
-                <%= simple_format(@recipe.method) %>
-                <h4>コメント</h4>
-                <div id="comments_area">
-                    <%= render partial: 'comments/index', locals: {comments: @comments} %>
-                </div>
-                <% if user_signed_in? %>
-                    <div class="comment_form">
-                        <%= form_tag "/recipes/#{@recipe.id}/comments" do %>
-                            <input type="text" name="content", class="comment_form_input">
-                            <input type="hidden" name="user_id" value="<%= current_user.id %>"> 
-                            <input type="hidden" name="recipe_id" value="<%= @recipe.id %>"> 
-                            <input type="submit" value="コメントする", class="comment_btn">
-                        <% end %>
-                    </div>
-                <% end %>
-                <% if current_user.id == @recipe.user.id || current_user.admin == true %>
-                    <%= link_to("レシピの編集", "/recipes/#{@recipe.id}/edit", :class => "recipe_edit_btn") %>
-                    <button id="recipe_delete_btn">レシピを削除する</button>
-                    <div id="recipe_bg">
-                        <div id="recipe_delete_alertbox">
-                            <p>本当にレシピを削除しますか？</p>
-                            <button id="close_btn">いいえ</button>
-                            <button id="delete_btn"><%= link_to 'はい', "/recipes/#{@recipe.id}", method: :delete %></button>
-                        </div>
-                    </div>
-                <% end %>
-            </div>
+  <div class="recipe_show">
+    <% if @recipe.present? %>
+      <h1><%= @recipe.name %></h1>
+      <div class="recipe_show_img">
+        <% if @recipe.image.present? %>
+          <div class="present_image">
+            <%= image_tag @recipe.image %>
+          </div>
         <% else %>
-            <p>レシピが存在しません</p>
+          <div class="show_no_image">
+            <p>No Image</p>
+          </div>
         <% end %>
-    </div>
+        <div class="recipe_user">
+          <% if @recipe.user.image.present? %>
+            <%= link_to user_path(@recipe.user.id) do %>
+              <%= image_tag @recipe.user.image %>
+            <% end %>
+          <% else %>
+            <%= link_to user_path(@recipe.user.id) do %>
+              <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+            <% end %>
+          <% end %>
+          <%= link_to(@recipe.user.nickname, "/users/#{@recipe.user.id}", :class => "recipe_index_user_name") %>
+        </div>
+        <% if Like.find_by(user_id: current_user.id, recipe_id: @recipe.id) %>
+          <%= link_to("/likes/#{@recipe.id}/destroy", {method: "recipe"}) do %>
+            <span class="fa fa-heart like-btn-unlike"></span>
+          <% end %>
+        <% else %>
+          <%= link_to("/likes/#{@recipe.id}/create", {method: "recipe"}) do %>
+            <span class="fa fa-heart like-btn"></span>
+          <% end %>
+        <% end %>
+        <span class="likes_count"><%= @likes_count %></span>
+        <% if @recipe.tag_list.present? %>
+          <div class="recipe_show_tag">
+            <i class="fas fa-tags fa-fw"></i>
+            <% @recipe.tag_list.each do |tag| %>
+              <%= link_to tag, recipes_path(tag_name: tag), :class => "show_tag_container" %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="recipe_show_updated_at">
+          <%= @recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
+        </div>
+      </div>
+      <div class="clear">
+        <h4>材料</h4>
+        <p><%= @recipe.materials %></p>
+        <h4>作り方</h4>
+        <%= simple_format(@recipe.method) %>
+        <h4>コメント</h4>
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: {comments: @comments} %>
+        </div>
+        <% if user_signed_in? %>
+          <div class="comment_form">
+            <%= form_tag "/recipes/#{@recipe.id}/comments" do %>
+              <input type="text" name="content", class="comment_form_input">
+              <input type="hidden" name="user_id" value="<%= current_user.id %>">
+              <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+              <input type="submit" value="コメントする", class="comment_btn">
+            <% end %>
+          </div>
+        <% end %>
+        <% if current_user.id == @recipe.user.id || current_user.admin == true %>
+          <%= link_to("レシピの編集", "/recipes/#{@recipe.id}/edit", :class => "recipe_edit_btn") %>
+          <button id="recipe_delete_btn">レシピを削除する</button>
+          <div id="recipe_bg">
+            <div id="recipe_delete_alertbox">
+              <p>本当にレシピを削除しますか？</p>
+              <button id="close_btn">いいえ</button>
+              <button id="delete_btn"><%= link_to 'はい', "/recipes/#{@recipe.id}", method: :delete %></button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p>レシピが存在しません</p>
+    <% end %>
+  </div>
 </div>
-
-

@@ -35,7 +35,7 @@
       <br>
       <%= render 'stats' %>
     </div>
-    
+
     <ul class="user-tabs">
       <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
       <li><%= link_to("お気に入り", "/users/#{@user.id}/likes") %></li>
@@ -45,33 +45,33 @@
         <% @recipes.each do |recipe| %>
           <div class="recipes-index-item" id="wrap">
             <div class="recipe_index">
-                <% if recipe.image.present? %>
-                    <div class="image_container">
-                        <%= image_tag recipe.image %>
-                    </div>
-                <% else %>
-                    <div class="no_image_container">
-                        <p>No Image</p>
-                    </div>
-                <% end %>
-                <%= link_to recipe.name, recipe_path(recipe.id) %><br>
-                <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
-                <i class="fas fa-heart heart-red"></i>
-                <%= Like.where(recipe_id: recipe.id).count %><br>
-                <% msg = '材料:'%>
-                <%= msg %>
-                <%= recipe.materials %>
-                <% if recipe.tag_list.present? %>
-                    <div class="recipe_show_tag">
-                        <i class="fas fa-tags fa-fw"></i>
-                        <% recipe.tag_list.each do |tag| %>
-                          <%= link_to tag, recipes_path(tag_name: tag), :class => "show_tag_container" %>
-                        <% end %>
-                    </div>
-                <% end %>
-                <div class="recipe_updated_at">
-                    <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
+              <% if recipe.image.present? %>
+                <div class="image_container">
+                  <%= image_tag recipe.image %>
                 </div>
+              <% else %>
+                <div class="no_image_container">
+                  <p>No Image</p>
+                </div>
+              <% end %>
+              <%= link_to recipe.name, recipe_path(recipe.id) %><br>
+              <%= link_to(recipe.user.nickname, "/users/#{recipe.user.id}") %>
+              <i class="fas fa-heart heart-red"></i>
+              <%= Like.where(recipe_id: recipe.id).count %><br>
+              <% msg = '材料:'%>
+              <%= msg %>
+              <%= recipe.materials %>
+              <% if recipe.tag_list.present? %>
+                <div class="recipe_show_tag">
+                  <i class="fas fa-tags fa-fw"></i>
+                  <% recipe.tag_list.each do |tag| %>
+                    <%= link_to tag, recipes_path(tag_name: tag), :class => "show_tag_container" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="recipe_updated_at">
+                <%= recipe.updated_at.strftime("%Y-%m-%d %H:%M") %>
+              </div>
             </div>
           </div>
         <% end %>

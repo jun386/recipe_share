@@ -12,15 +12,15 @@
   </head>
 
   <body ontouchstart="" data-turbolinks="false">
-      <%= render 'layouts/navbar' %>
-      <% flash.each do |message_type, message| %>
+    <%= render 'layouts/navbar' %>
+    <% flash.each do |message_type, message| %>
       <div class="notifications">
         <%= content_tag(:div, message, class: "#{message_type}") %>
       </div>
-      <% end %>
-      <div class="application_wrapper">
-        <%= yield %>
-      </div>
+    <% end %>
+    <div class="application_wrapper">
+      <%= yield %>
+    </div>
     <footer>
       <div class="footer_container">
         <a href="/inquiries/new">お問合せ</a>

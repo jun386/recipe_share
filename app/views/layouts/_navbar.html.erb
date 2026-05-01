@@ -41,10 +41,10 @@
       </li>
     <% elsif user_signed_in? && current_user.admin == true %>
       <li class="header-search">
-      <%= form_tag("/recipes/recipe_search") do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
-      <% end %>
+        <%= form_tag("/recipes/recipe_search") do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索', :name => nil, :class => "btn btn-search" %>
+        <% end %>
       </li>
       <li>
         <%= link_to("投稿一覧", "/recipes") %>
@@ -63,20 +63,20 @@
       </li>
       <li class="admin-menu">
         <a href="#">管理者メニュー</a>
-          <ul>
-            <li>
-              <%= link_to(current_user.nickname, "/users/#{current_user.id}") %>
-            </li>
-            <li>
-              <%= link_to("お問い合わせ一覧", " /inquiries") %>
-            </li>
-            <li>
-              <%= link_to("管理者ページ", " /admin", target: :_blank) %>
-            </li>
-            <li>
-              <%= link_to("トップ画像の変更", " /home/new") %>
-            </li>
-          </ul>
+        <ul>
+          <li>
+            <%= link_to(current_user.nickname, "/users/#{current_user.id}") %>
+          </li>
+          <li>
+            <%= link_to("お問い合わせ一覧", " /inquiries") %>
+          </li>
+          <li>
+            <%= link_to("管理者ページ", " /admin", target: :_blank) %>
+          </li>
+          <li>
+            <%= link_to("トップ画像の変更", " /home/new") %>
+          </li>
+        </ul>
       </li>
       <li>
         <%= link_to("ログアウト", destroy_user_session_path, method: :delete) %>
@@ -89,5 +89,3 @@
     <% end %>
   </ul>
 </nav>
-
-
