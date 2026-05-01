@@ -6,33 +6,33 @@
         <p><%= e.user.nickname %></p>
       <% end %>
     </div>
-  <div class="line-bc" id="line-bc">
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-        <% if m.sender_id == current_user.id %>
-          <div class="mycomment">
-            <p><%= m.message %></p>
-          </div>
-          <div class="bms_clear"></div>
-        <% else %>
-          <div class="balloon6">
-            <div class="faceicon">
-              <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+    <div class="line-bc" id="line-bc">
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <% if m.sender_id == current_user.id %>
+            <div class="mycomment">
+              <p><%= m.message %></p>
             </div>
-            <div class="chatting">
-              <div class="says">
-                <p><%= m.message %></p>
+            <div class="bms_clear"></div>
+          <% else %>
+            <div class="balloon6">
+              <div class="faceicon">
+                <i class="fas fa-user-circle fa-2x fa-fw my-skyblue"></i>
+              </div>
+              <div class="chatting">
+                <div class="says">
+                  <p><%= m.message %></p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="bms_clear"></div>
+            <div class="bms_clear"></div>
+          <% end %>
         <% end %>
+      <% else %>
+        <br>
+        <h3 class="text-center">メッセージはまだありません</h3>
+        <br>
       <% end %>
-    <% else %>
-      <br>
-      <h3 class="text-center">メッセージはまだありません</h3>
-      <br>
-    <% end %>
     </div>
     <br>
     <div id="bms_send">
