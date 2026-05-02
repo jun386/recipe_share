@@ -24,6 +24,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_interaction (4.1.0)
+      activemodel (>= 5, < 8)
+      activesupport (>= 5, < 8)
     activejob (5.0.7.2)
       activesupport (= 5.0.7.2)
       globalid (>= 0.3.6)
@@ -301,6 +304,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_interaction
   acts-as-taggable-on (~> 6.0)
   bootstrap-will_paginate (= 1.0.0)
   byebug

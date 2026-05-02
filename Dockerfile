@@ -11,7 +11,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 COPY Gemfile $APP_ROOT
 COPY Gemfile.lock $APP_ROOT
 
-RUN gem install bundler
+RUN gem install bundler -v 2.4.22
 RUN bundle install
 
 COPY . $APP_ROOT/
