@@ -36,6 +36,14 @@ RSpec.describe Recipe, type: :model do
       it "検索対象の単語がnilの時、全てのレシピを返すこと" do
         expect(Recipe.search(nil)).to include(recipe1, recipe2)
       end
+
+      it "検索対象が空文字のとき LIKE が全件にマッチすること" do
+        expect(Recipe.search("")).to include(recipe1, recipe2)
+      end
+
+      it "一致しないキーワードのとき、該当レシピを含まないこと" do
+        expect(Recipe.search("存在しない料理名xyz")).not_to include(recipe1, recipe2)
+      end
     end
   end
 end

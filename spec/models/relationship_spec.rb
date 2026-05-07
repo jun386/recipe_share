@@ -30,4 +30,16 @@ RSpec.describe Relationship, type: :model do
       expect(Relationship.reflect_on_association(:following).macro).to eq :belongs_to
     end
   end
+
+  describe "データベース制約" do
+    let(:follower) { FactoryBot.create(:user1) }
+    let(:following) { FactoryBot.create(:user2) }
+
+    it "同一の follower / following の組み合わせを二重に作れないこと" do
+      Relationship.create!(follower: follower, following: following)
+      expect do
+        Relationship.create!(follower: follower, following: following)
+      end.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+  end
 end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    recipe_id { 1 }
+    association :recipe
+    association :user
     content { Faker::Lorem.paragraph }
-    user_id { 1 }
   end
 end

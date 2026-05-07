@@ -2,19 +2,23 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   describe "バリデーション" do
+    let(:user) { FactoryBot.create(:user) }
+    let(:recipe) { FactoryBot.create(:recipe) }
+
     it "user_idが空欄でないこと" do
-      like = Like.new(recipe_id: 1).save
-      expect(like).to eq(false)
+      like = Like.new(recipe: recipe)
+      expect(like).not_to be_valid
     end
 
     it "recipe_idが空欄でないこと" do
-      like = Like.new(user_id: 1).save
-      expect(like).to eq(false)
+      like = Like.new(user: user)
+      expect(like).not_to be_valid
     end
 
     it "有効な状態であること" do
-      like = Like.new(user_id: 1, recipe_id: 1).save
-      expect(like).to eq(true)
+      like = FactoryBot.build(:like, user: user, recipe: recipe)
+      expect(like).to be_valid
+      expect { like.save! }.to change(Like, :count).by(1)
     end
   end
 
