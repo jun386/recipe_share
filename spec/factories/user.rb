@@ -5,6 +5,10 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     confirmed_at {Time.now - 100}
+
+    trait :admin do
+      admin { true }
+    end
   end
 
   factory :user1, :class => 'User' do

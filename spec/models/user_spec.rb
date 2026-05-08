@@ -71,4 +71,12 @@ RSpec.describe User, type: :model do
       expect(user1.following?(user2)).to be_falsey
     end
   end
+
+  describe "dependent: :destroy" do
+    it "ユーザーを削除するとレシピも削除されること" do
+      user = FactoryBot.create(:user)
+      FactoryBot.create(:recipe, user: user)
+      expect { user.destroy }.to change(Recipe, :count).by(-1)
+    end
+  end
 end

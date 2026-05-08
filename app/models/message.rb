@@ -3,6 +3,6 @@ class Message < ApplicationRecord
   belongs_to :room
 
   def user
-    return User.find_by(id: self.sender_id)
+    User.find_by(id: user_id)
   end
 end
